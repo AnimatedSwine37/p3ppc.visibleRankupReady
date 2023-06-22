@@ -5,6 +5,7 @@ using Reloaded.Hooks.Definitions.Enums;
 using Reloaded.Hooks.Definitions.X64;
 using Reloaded.Hooks.ReloadedII.Interfaces;
 using Reloaded.Memory;
+using Reloaded.Memory.Interfaces;
 using Reloaded.Memory.SigScan.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
 using System.Diagnostics;
@@ -61,6 +62,7 @@ namespace p3ppc.visibleRankupReady
         private IAsmHook _detailsRankOffsetHook;
         private IAsmHook _detailsRankNumOffsetHook;
         private IAsmHook _detailsMaxOffsetHook;
+        private IAsmHook _maxArcanaHook;
         private bool* _isFemc;
         private float* _detailsXOffset;
         private float* _maxXOffset;
@@ -69,6 +71,7 @@ namespace p3ppc.visibleRankupReady
 
         public Mod(ModContext context)
         {
+            Debugger.Launch();
             _modLoader = context.ModLoader;
             _hooks = context.Hooks;
             _logger = context.Logger;
@@ -282,6 +285,34 @@ namespace p3ppc.visibleRankupReady
                 };
                 _detailsMaxOffsetHook = _hooks.CreateAsmHook(function, result.Offset + Utils.BaseAddress, AsmHookBehaviour.ExecuteFirst).Activate();
             });
+
+            // Fixes the Arcana name of Maxed links being the wrong colour (broken in vanilla)
+            startupScanner.AddMainModuleScan("42 8B 8C ?? ?? ?? ?? ?? 89 4C 24 ?? 89 4D ?? 0F B6 4C 24 ??", result =>
+            {
+                if (!result.Found)
+                {
+                    Utils.LogError($"Unable to find MaxArcanaNameColour, stuff won't work :(");
+                    return;
+                }
+                Utils.LogDebug($"Found MaxArcanaNameColour at 0x{result.Offset + Utils.BaseAddress:X}");
+
+                memory.Read((nuint)(Utils.BaseAddress + result.Offset + 4), out int colourAddress);
+
+                // Change the colour when it's selected
+                memory.SafeWrite((nuint)(result.Offset + Utils.BaseAddress - 36), BitConverter.GetBytes(colourAddress));
+
+                // Change the colour when it isn't selected
+                string[] function =
+                {
+                    "use64",
+                    "push rcx",
+                    $"mov ecx,[rcx+r8+{colourAddress-4}]",
+                    "mov [rsp+0x84], ecx",
+                    "pop rcx"
+                };
+                _maxArcanaHook = _hooks.CreateAsmHook(function, result.Offset + Utils.BaseAddress, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
 
             startupScanner.AddMainModuleScan("48 8D 35 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ??", result =>
             {

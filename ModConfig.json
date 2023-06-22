@@ -1,0 +1,25 @@
+{
+  "ModId": "p3ppc.visibleRankupReady",
+  "ModName": "Visible Rankup Ready",
+  "ModAuthor": "AnimatedSwine37",
+  "ModVersion": "1.0.0",
+  "ModDescription": "Adds an icon next to social links that are ready to rank up in the S.Link menu",
+  "ModDll": "p3ppc.visibleRankupReady.dll",
+  "ModIcon": "Preview.png",
+  "ModR2RManagedDll32": "x86/p3ppc.visibleRankupReady.dll",
+  "ModR2RManagedDll64": "x64/p3ppc.visibleRankupReady.dll",
+  "ModNativeDll32": "",
+  "ModNativeDll64": "",
+  "IsLibrary": false,
+  "ReleaseMetadataFileName": "p3ppc.visibleRankupReady.ReleaseMetadata.json",
+  "PluginData": {},
+  "IsUniversalMod": false,
+  "ModDependencies": [
+    "reloaded.sharedlib.hooks",
+    "p5rpc.modloader",
+    "Reloaded.Memory.SigScan.ReloadedII"
+  ],
+  "OptionalDependencies": [],
+  "SupportedAppId": ["p3p.exe"],
+  "ProjectUrl": ""
+}

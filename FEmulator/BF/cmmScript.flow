@@ -1,0 +1,3114 @@
+import("cmm.msg");
+
+void SCR_CMM_CLASSMAT_CMMOK_hook()
+{
+    int var4;
+    int var1;
+    int var3;
+    int var2;
+    var4 = 2;
+    MSG_WND_DSP();
+    
+    if ( CMM_GET_LV( var4 ) >= 2 )
+    {
+        
+        if ( !BIT_CHK( 2800 ) )
+        {
+            MSG( CLASS_YUKARI_INFO );
+            BIT_ON( 2800 );
+            MSG_WND_CLS();
+            return;
+        }
+
+    }
+
+    
+    if ( CMM_GET_LV( var4 ) >= 3 )
+    {
+        
+        if ( !BIT_CHK( 2653 ) )
+        {
+            MSG( SCR_MSG_SHUMATU );
+            BIT_ON( 2653 );
+            MSG_WND_CLS();
+            return;
+        }
+
+    }
+
+    
+    if ( CMM_GET_LV( var4 ) >= 4 )
+    {
+        
+        if ( !BIT_CHK( 2790 ) )
+        {
+            MSG( REVERS_JOKEN );
+            BIT_ON( 2790 );
+            MSG_WND_CLS();
+            return;
+        }
+
+    }
+
+    
+    if ( ( CMM_GET_LV( var4 ) == 3 ) && ( CMM_CHK_LVUP( var4 ) == 1 ) )
+    {
+        MSG( SCR_MSG_CLASS_lv4 );
+    }
+    else if ( ( CMM_GET_LV( var4 ) == 7 ) && ( CMM_CHK_LVUP( var4 ) == 1 ) )
+    {
+        MSG( SCR_MSG_CLASS_lv8 );
+    }
+    else 
+    {
+        MSG( SCR_MSG_CLASS_01 );
+    }
+
+    EVT_FUNCTION_0014( var4 );
+    
+    if ( ( CMM_GET_LV( var4 ) != 10 ) && ( EVT_FUNCTION_001A( var4 ) != 0 ) )
+    {
+        MSG( MSG_DOUZOKUSEI );
+    }
+
+    if(CMM_CHK_LVUP(var4))
+    {
+        MSG(RankupReady);
+    }
+
+    sentakuloop:
+    MSG_WND_CLS();
+    MSG_WND_DSP();
+    MSG( CLASS_SASOI );
+    SEL_DEFKEY( 14, 2 );
+    var1 = SEL( CLASS_COMMU_SEL );
+    
+    if ( var1 == 0 )
+    {
+        EVT_FUNCTION_000C( 0, 2 );
+        
+        if ( CMM_CHK_LVUP( var4 ) == 1 )
+        {
+            
+            if ( CMM_GET_LV( var4 ) == 3 )
+            {
+                MSG( SCR_MSG_CLASS_lv4_YES );
+            }
+            else if ( CMM_GET_LV( var4 ) == 7 )
+            {
+                MSG( SCR_MSG_CLASS_lv8_YES );
+            }
+            else 
+            {
+                MSG( SCR_MSG_CLASS_01_YES );
+            }
+
+            EVT_FUNCTION_0007( var4 );
+            BIT_OFF( 1824 );
+        }
+        else 
+        {
+            MSG( SCR_MSG_CLASS_01_YES );
+        }
+
+        MSG_WND_CLS();
+        FADE( 3, 0 );
+        FUNCTION_000F();
+        EVT_FUNCTION_000D();
+        NEXT_TIME();
+        return;
+    }
+    else if ( var1 == 1 )
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        EVT_FUNCTION_0014( var4 );
+        MSG( ZOKUSEI_KAKUNIN );
+        _23:
+        
+        if ( 1 )
+        {
+            var2 = EVT_FUNCTION_001D( var4, var3 );
+            
+            if ( var2 == 0 )
+            {
+                goto _24;
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            FUNCTION_0055( 1, 2 );
+            var3 = ( var3 + 1 );
+            goto _23;
+        }
+
+        _24:
+        var3 = 0;
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var4 ) == 10 )
+        {
+            MSG( ZOKUSEI_NOMORE );
+        }
+        else 
+        {
+            MSG( ZOKUSEI_NOTYET );
+        }
+
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        goto sentakuloop;
+        return;
+    }
+    else 
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        MSG( SCR_MSG_CLASS_01_NO );
+        MSG_WND_CLS();
+        return;
+    }
+
+}
+
+void SCR_CMM_K_YUKARI_hook()
+{
+    int var12;
+    int var9;
+    int var11;
+    int var10;
+    var12 = 5;
+    MSG_WND_DSP();
+    
+    if ( EVT_FUNCTION_0010( var12 ) == 1 )
+    {
+        
+        if ( BIT_CHK( 3055 ) )
+        {
+            MSG( YUKARI_REV_AGAIN );
+            MSG_WND_CLS();
+            return;
+        }
+        else if ( GET_COUNT( 100 ) == 0 )
+        {
+            MSG( YUKARI_REV_01 );
+            SET_COUNT( 100, 1 );
+        }
+        else 
+        {
+            MSG( YUKARI_REV_02 );
+        }
+
+        BIT_ON( 3055 );
+        var9 = SEL( REV_SEL );
+        
+        if ( var9 == 2 )
+        {
+            MSG( YUKARI_REV_NO );
+        }
+        else 
+        {
+            SET_COUNT( 100, ( GET_COUNT( 100 ) + 1 ) );
+            
+            if ( GET_COUNT( 100 ) >= 4 )
+            {
+                MSG( YUKARI_REV_RELEASE );
+                MSG( REV_RELEASE );
+                EVT_FUNCTION_0012( var12, 0 );
+                SET_COUNT( 100, 0 );
+                FADE( 1, 0 );
+                CALL_FIELD( 6, 3, 255, 0 );
+                return;
+            }
+            else 
+            {
+                MSG( YUKARI_REV_NOT_RELEASE );
+                MSG( REV_NOTRELEASE );
+            }
+
+        }
+
+        MSG_WND_CLS();
+        return;
+    }
+    else if ( CMM_GET_LV( var12 ) == 10 )
+    {
+        MSG( SCR_MSG_YUKARI_MAX );
+    }
+    else if ( ( CMM_GET_LV( var12 ) == 5 ) && ( CMM_CHK_LVUP( var12 ) == 1 ) )
+    {
+        MSG( SCR_MSG_YUKARI_lv6 );
+    }
+    else if ( ( CMM_GET_LV( var12 ) == 8 ) && ( CMM_CHK_LVUP( var12 ) == 1 ) )
+    {
+        MSG( SCR_MSG_YUKARI_lv6 );
+    }
+    else 
+    {
+        MSG( SCR_MSG_YUKARI_01 );
+    }
+
+    EVT_FUNCTION_0014( var12 );
+    
+    if ( ( CMM_GET_LV( var12 ) != 10 ) && ( EVT_FUNCTION_001A( var12 ) != 0 ) )
+    {
+        MSG( MSG_DOUZOKUSEI );
+    }
+
+    if(CMM_CHK_LVUP(var12))
+    {
+        MSG(RankupReady);
+    }
+
+    sentakuloop2:
+    MSG_WND_CLS();
+    MSG_WND_DSP();
+    
+    if ( CMM_GET_LV( var12 ) == 10 )
+    {
+        MSG( KOIBITO_AFTERMAX_YESNO );
+    }
+    else 
+    {
+        MSG( SCR_MSG_YUKARI_02 );
+    }
+
+    SEL_DEFKEY( 14, 2 );
+    var9 = SEL( YUKARI_COMMU_SEL );
+    
+    if ( var9 == 0 )
+    {
+        
+        if ( CMM_GET_LV( var12 ) == 10 )
+        {
+            MSG( YUKARI_AFTERMAX_YES );
+            MSG_WND_CLS();
+            FADE( 3, 0 );
+            FUNCTION_000F();
+            CALL_EVENT( 560, 101 );
+            NEXT_TIME();
+            return;
+        }
+        else 
+        {
+            EVT_FUNCTION_000C( 0, 5 );
+            
+            if ( CMM_CHK_LVUP( var12 ) == 1 )
+            {
+                
+                if ( CMM_GET_LV( var12 ) == 5 )
+                {
+                    MSG( SCR_MSG_YUKARI_lv6_YES );
+                }
+                else if ( CMM_GET_LV( var12 ) == 8 )
+                {
+                    MSG( SCR_MSG_YUKARI_lv6_YES );
+                }
+                else if ( CMM_GET_LV( var12 ) == 9 )
+                {
+                    MSG( SCR_MSG_YUKARI_lv10_YES );
+                }
+                else 
+                {
+                    MSG( SCR_MSG_YUKARI_01_YES );
+                }
+
+                EVT_FUNCTION_0007( var12 );
+                BIT_OFF( 1825 );
+            }
+            else 
+            {
+                MSG( SCR_MSG_YUKARI_01_YES );
+            }
+
+            MSG_WND_CLS();
+            FADE( 3, 0 );
+            FUNCTION_000F();
+            BIT_ON( 3040 );
+            EVT_FUNCTION_000D();
+            NEXT_TIME();
+            return;
+        }
+
+    }
+    else if ( var9 == 1 )
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        EVT_FUNCTION_0014( var12 );
+        MSG( ZOKUSEI_KAKUNIN );
+        _81:
+        
+        if ( 1 )
+        {
+            var10 = EVT_FUNCTION_001D( var12, var11 );
+            
+            if ( var10 == 0 )
+            {
+                goto _82;
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            FUNCTION_0055( 1, 2 );
+            var11 = ( var11 + 1 );
+            goto _81;
+        }
+
+        _82:
+        var11 = 0;
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var12 ) == 10 )
+        {
+            MSG( ZOKUSEI_NOMORE );
+        }
+        else 
+        {
+            MSG( ZOKUSEI_NOTYET );
+        }
+
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        goto sentakuloop2;
+        return;
+    }
+    else if ( CMM_GET_LV( var12 ) < 10 )
+    {
+        MSG( SCR_MSG_YUKARI_01_NO );
+    }
+
+    MSG_WND_CLS();
+    return;
+}
+
+void SCR_CMM_K_FUUKA__hook()
+{
+    int var17;
+    int var14;
+    int var16;
+    int var15;
+    var17 = 6;
+    MSG_WND_DSP();
+    
+    if ( EVT_FUNCTION_0010( var17 ) == 1 )
+    {
+        
+        if ( BIT_CHK( 3056 ) )
+        {
+            MSG( FUUKA_REV_AGAIN );
+            MSG_WND_CLS();
+            return;
+        }
+        else if ( GET_COUNT( 101 ) == 0 )
+        {
+            MSG( FUUKA_REV_01 );
+            SET_COUNT( 101, 1 );
+        }
+        else 
+        {
+            MSG( FUUKA_REV_02 );
+        }
+
+        BIT_ON( 3056 );
+        var14 = SEL( REV_SEL );
+        
+        if ( var14 == 2 )
+        {
+            MSG( FUUKA_REV_NO );
+        }
+        else 
+        {
+            SET_COUNT( 101, ( GET_COUNT( 101 ) + 1 ) );
+            
+            if ( GET_COUNT( 101 ) >= 4 )
+            {
+                MSG( FUUKA_REV_RELEASE );
+                MSG( REV_RELEASE );
+                EVT_FUNCTION_0012( var17, 0 );
+                SET_COUNT( 101, 0 );
+                FADE( 1, 0 );
+                CALL_FIELD( 6, 4, 2, 0 );
+                return;
+            }
+            else 
+            {
+                MSG( FUUKA_REV_NOT_RELEASE );
+                MSG( REV_NOTRELEASE );
+            }
+
+        }
+
+        MSG_WND_CLS();
+        return;
+    }
+    else if ( CMM_GET_LV( var17 ) == 10 )
+    {
+        MSG( SCR_MSG_FUUKA_MAX );
+    }
+    else if ( ( CMM_GET_LV( var17 ) >= 7 ) && ( CMM_CHK_LVUP( var17 ) == 1 ) )
+    {
+        MSG( SCR_MSG_FUUKA_lv7 );
+    }
+    else 
+    {
+        MSG( SCR_MSG_FUUKA_01 );
+    }
+
+    EVT_FUNCTION_0014( var17 );
+    
+    if ( ( CMM_GET_LV( var17 ) != 10 ) && ( EVT_FUNCTION_001A( var17 ) != 0 ) )
+    {
+        MSG( MSG_DOUZOKUSEI );
+    }
+
+    if(CMM_CHK_LVUP(var17))
+    {
+        MSG(RankupReady);
+    }
+
+    sentakuloop3:
+    MSG_WND_CLS();
+    MSG_WND_DSP();
+    
+    if ( CMM_GET_LV( var17 ) == 10 )
+    {
+        MSG( KOIBITO_AFTERMAX_YESNO );
+    }
+    else 
+    {
+        MSG( SCR_MSG_FUUKA_02 );
+    }
+
+    SEL_DEFKEY( 14, 2 );
+    var14 = SEL( FUUKA_COMMU_SEL );
+    
+    if ( var14 == 0 )
+    {
+        
+        if ( CMM_GET_LV( var17 ) == 10 )
+        {
+            MSG( FUUKA_AFTERMAX_YES );
+            MSG_WND_CLS();
+            FADE( 3, 0 );
+            FUNCTION_000F();
+            CALL_EVENT( 570, 101 );
+            NEXT_TIME();
+            return;
+        }
+        else 
+        {
+            EVT_FUNCTION_000C( 0, 6 );
+            
+            if ( CMM_CHK_LVUP( var17 ) == 1 )
+            {
+                
+                if ( CMM_GET_LV( var17 ) == 1 )
+                {
+                    MSG( SCR_MSG_FUUKA_lv2_YES );
+                }
+                else if ( CMM_GET_LV( var17 ) == 4 )
+                {
+                    MSG( SCR_MSG_FUUKA_lv2_YES );
+                }
+                else if ( CMM_GET_LV( var17 ) == 5 )
+                {
+                    MSG( SCR_MSG_FUUKA_lv7_YES );
+                }
+                else if ( CMM_GET_LV( var17 ) == 7 )
+                {
+                    MSG( SCR_MSG_FUUKA_lv7_YES );
+                }
+                else if ( CMM_GET_LV( var17 ) == 8 )
+                {
+                    MSG( SCR_MSG_FUUKA_lv7_YES );
+                }
+                else if ( CMM_GET_LV( var17 ) == 9 )
+                {
+                    MSG( SCR_MSG_FUUKA_lv9_YES );
+                }
+                else 
+                {
+                    MSG( SCR_MSG_FUUKA_01_YES );
+                }
+
+                EVT_FUNCTION_0007( var17 );
+                BIT_OFF( 1826 );
+            }
+            else 
+            {
+                MSG( SCR_MSG_FUUKA_01_YES );
+            }
+
+            MSG_WND_CLS();
+            FADE( 3, 0 );
+            FUNCTION_000F();
+            BIT_ON( 3041 );
+            EVT_FUNCTION_000D();
+            NEXT_TIME();
+            return;
+        }
+
+    }
+    else if ( var14 == 1 )
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        EVT_FUNCTION_0014( var17 );
+        MSG( ZOKUSEI_KAKUNIN );
+        _157:
+        
+        if ( 1 )
+        {
+            var15 = EVT_FUNCTION_001D( var17, var16 );
+            
+            if ( var15 == 0 )
+            {
+                goto _158;
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            FUNCTION_0055( 1, 2 );
+            var16 = ( var16 + 1 );
+            goto _157;
+        }
+
+        _158:
+        var16 = 0;
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var17 ) == 10 )
+        {
+            MSG( ZOKUSEI_NOMORE );
+        }
+        else 
+        {
+            MSG( ZOKUSEI_NOTYET );
+        }
+
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        goto sentakuloop3;
+        return;
+    }
+    else if ( CMM_GET_LV( var17 ) < 10 )
+    {
+        MSG( SCR_MSG_FUUKA_01_NO );
+    }
+
+    MSG_WND_CLS();
+    return;
+}
+
+void SCR_CMM_K_MITURU_hook()
+{
+    int var22;
+    int var19;
+    int var21;
+    int var20;
+    var22 = 7;
+    MSG_WND_DSP();
+    
+    if ( ( BIT_CHK( 2784 ) || BIT_CHK( 2785 ) ) && !BIT_CHK( 2783 ) )
+    {
+        
+        if ( CHK_DAYS_STARTEND( 5, 25, 7, 13 ) == 1 )
+        {
+            MSG( MITURU_TOP_HOUBI_01 );
+            SET_ITEM_NUM( ( 1280 + 52 ), ( GET_ITEM_NUM( ( 1280 + 52 ) ) + 1 ) );
+            SET_ITEM_NUM( ( 1280 + 56 ), ( GET_ITEM_NUM( ( 1280 + 56 ) ) + 1 ) );
+            SET_ITEM_NUM( ( 1280 + 60 ), ( GET_ITEM_NUM( ( 1280 + 60 ) ) + 1 ) );
+            SET_ITEM_NUM( ( 1280 + 0x40 ), ( GET_ITEM_NUM( ( 1280 + 0x40 ) ) + 1 ) );
+            
+            if ( BIT_CHK( 2784 ) )
+            {
+                MSG( MITURU_TOP_HOUBI_01_TUIK );
+                SET_ITEM_NUM( ( 1680 + 92 ), ( GET_ITEM_NUM( ( 1680 + 92 ) ) + 1 ) );
+            }
+
+        }
+        else if ( CHK_DAYS_STARTEND( 7, 24, 10, 12 ) == 1 )
+        {
+            MSG( MITURU_TOP_HOUBI_02 );
+            SET_ITEM_NUM( ( 1280 + 53 ), ( GET_ITEM_NUM( ( 1280 + 53 ) ) + 1 ) );
+            SET_ITEM_NUM( ( 1280 + 57 ), ( GET_ITEM_NUM( ( 1280 + 57 ) ) + 1 ) );
+            SET_ITEM_NUM( ( 1280 + 61 ), ( GET_ITEM_NUM( ( 1280 + 61 ) ) + 1 ) );
+            SET_ITEM_NUM( ( 1280 + 65 ), ( GET_ITEM_NUM( ( 1280 + 65 ) ) + 1 ) );
+            
+            if ( BIT_CHK( 2784 ) )
+            {
+                MSG( MITURU_TOP_HOUBI_02_TUIK );
+                SET_ITEM_NUM( ( 1680 + 113 ), ( GET_ITEM_NUM( ( 1680 + 113 ) ) + 1 ) );
+            }
+
+        }
+        else if ( CHK_DAYS_STARTEND( 10, 19, 12, 13 ) == 1 )
+        {
+            
+            if ( CHK_DAYS_STARTEND( 10, 19, 11, 4 ) == 1 )
+            {
+                MSG( MITURU_TOP_HOUBI_03 );
+            }
+            else if ( CHK_DAYS_STARTEND( 11, 5, 12, 13 ) == 1 )
+            {
+                MSG( MITURU_TOP_HOUBI_03_2 );
+            }
+
+            SET_ITEM_NUM( ( 1280 + 54 ), ( GET_ITEM_NUM( ( 1280 + 54 ) ) + 1 ) );
+            SET_ITEM_NUM( ( 1280 + 58 ), ( GET_ITEM_NUM( ( 1280 + 58 ) ) + 1 ) );
+            SET_ITEM_NUM( ( 1280 + 62 ), ( GET_ITEM_NUM( ( 1280 + 62 ) ) + 1 ) );
+            SET_ITEM_NUM( ( 1280 + 66 ), ( GET_ITEM_NUM( ( 1280 + 66 ) ) + 1 ) );
+            
+            if ( BIT_CHK( 2784 ) )
+            {
+                MSG( MITURU_TOP_HOUBI_03_TUIK );
+                SET_ITEM_NUM( ( 1680 + 15 ), ( GET_ITEM_NUM( ( 1680 + 15 ) ) + 1 ) );
+            }
+
+        }
+        else 
+        {
+            MSG( MITURU_TOP_HOUBI_04_2 );
+            SET_ITEM_NUM( ( 1280 + 55 ), ( GET_ITEM_NUM( ( 1280 + 55 ) ) + 1 ) );
+            SET_ITEM_NUM( ( 1280 + 59 ), ( GET_ITEM_NUM( ( 1280 + 59 ) ) + 1 ) );
+            SET_ITEM_NUM( ( 1280 + 63 ), ( GET_ITEM_NUM( ( 1280 + 63 ) ) + 1 ) );
+            SET_ITEM_NUM( ( 1280 + 67 ), ( GET_ITEM_NUM( ( 1280 + 67 ) ) + 1 ) );
+            
+            if ( BIT_CHK( 2784 ) )
+            {
+                MSG( MITURU_TOP_HOUBI_04_TUIK );
+                SET_ITEM_NUM( ( 1680 + 96 ), ( GET_ITEM_NUM( ( 1680 + 96 ) ) + 1 ) );
+            }
+
+        }
+
+        BIT_ON( 2783 );
+        MSG_WND_CLS();
+        return;
+    }
+
+    
+    if ( EVT_FUNCTION_0010( var22 ) == 1 )
+    {
+        
+        if ( BIT_CHK( 3057 ) )
+        {
+            MSG( MITUR_REV_AGAIN );
+            MSG_WND_CLS();
+            return;
+        }
+        else if ( GET_COUNT( 102 ) == 0 )
+        {
+            MSG( MITUR_REV_01 );
+            SET_COUNT( 102, 1 );
+        }
+        else 
+        {
+            MSG( MITUR_REV_02 );
+        }
+
+        BIT_ON( 3057 );
+        var19 = SEL( REV_SEL );
+        
+        if ( var19 == 2 )
+        {
+            MSG( MITUR_REV_NO );
+        }
+        else 
+        {
+            SET_COUNT( 102, ( GET_COUNT( 102 ) + 1 ) );
+            
+            if ( GET_COUNT( 102 ) >= 4 )
+            {
+                MSG( MITUR_REV_RELEASE );
+                MSG( REV_RELEASE );
+                EVT_FUNCTION_0012( var22, 0 );
+                SET_COUNT( 102, 0 );
+                FADE( 1, 0 );
+                CALL_FIELD( 6, 7, 1, 0 );
+                return;
+            }
+            else 
+            {
+                MSG( MITUR_REV_NOT_RELEASE );
+                MSG( REV_NOTRELEASE );
+            }
+
+        }
+
+        MSG_WND_CLS();
+        return;
+    }
+    else if ( CMM_GET_LV( var22 ) == 10 )
+    {
+        MSG( SCR_MSG_MITURU_MAX );
+    }
+    else if ( ( CMM_GET_LV( var22 ) == 3 ) && ( CMM_CHK_LVUP( var22 ) == 1 ) )
+    {
+        MSG( SCR_MSG_MITURU_lv4 );
+    }
+    else if ( ( CMM_GET_LV( var22 ) == 5 ) && ( CMM_CHK_LVUP( var22 ) == 1 ) )
+    {
+        MSG( SCR_MSG_MITURU_lv4 );
+    }
+    else if ( ( CMM_GET_LV( var22 ) == 8 ) && ( CMM_CHK_LVUP( var22 ) == 1 ) )
+    {
+        MSG( SCR_MSG_MITURU_lv9 );
+    }
+    else if ( ( CMM_GET_LV( var22 ) == 9 ) && ( CMM_CHK_LVUP( var22 ) == 1 ) )
+    {
+        MSG( SCR_MSG_MITURU_lv10 );
+    }
+    else 
+    {
+        MSG( SCR_MSG_MITURU_01 );
+    }
+
+    EVT_FUNCTION_0014( var22 );
+    
+    if ( ( CMM_GET_LV( var22 ) != 10 ) && ( EVT_FUNCTION_001A( var22 ) != 0 ) )
+    {
+        MSG( MSG_DOUZOKUSEI );
+    }
+
+    if(CMM_CHK_LVUP(var22))
+    {
+        MSG(RankupReady);
+    }
+
+    sentakuloop4:
+    MSG_WND_CLS();
+    MSG_WND_DSP();
+    
+    if ( CMM_GET_LV( var22 ) == 10 )
+    {
+        MSG( KOIBITO_AFTERMAX_YESNO );
+    }
+    else 
+    {
+        MSG( SCR_MSG_MITURU_02 );
+    }
+
+    SEL_DEFKEY( 14, 2 );
+    var19 = SEL( MITURU_COMMU_SEL );
+    
+    if ( var19 == 0 )
+    {
+        
+        if ( CMM_GET_LV( var22 ) == 10 )
+        {
+            MSG( MITURU_AFTERMAX_YES );
+            MSG_WND_CLS();
+            FADE( 3, 0 );
+            FUNCTION_000F();
+            CALL_EVENT( 580, 101 );
+            NEXT_TIME();
+            return;
+        }
+        else 
+        {
+            EVT_FUNCTION_000C( 0, 7 );
+            
+            if ( CMM_CHK_LVUP( var22 ) == 1 )
+            {
+                
+                if ( CMM_GET_LV( var22 ) == 3 )
+                {
+                    MSG( SCR_MSG_MITURU_lv4_YES );
+                }
+                else if ( CMM_GET_LV( var22 ) == 5 )
+                {
+                    MSG( SCR_MSG_MITURU_lv4_YES );
+                }
+                else if ( CMM_GET_LV( var22 ) == 8 )
+                {
+                    MSG( SCR_MSG_MITURU_lv9_YES );
+                }
+                else if ( CMM_GET_LV( var22 ) == 9 )
+                {
+                    MSG( SCR_MSG_MITURU_lv10_YES );
+                }
+                else 
+                {
+                    MSG( SCR_MSG_MITURU_01_YES );
+                }
+
+                EVT_FUNCTION_0007( var22 );
+                BIT_OFF( 1827 );
+            }
+            else 
+            {
+                MSG( SCR_MSG_MITURU_01_YES );
+            }
+
+            MSG_WND_CLS();
+            FADE( 3, 0 );
+            FUNCTION_000F();
+            BIT_ON( 3042 );
+            EVT_FUNCTION_000D();
+            NEXT_TIME();
+            return;
+        }
+
+    }
+    else if ( var19 == 1 )
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        EVT_FUNCTION_0014( var22 );
+        MSG( ZOKUSEI_KAKUNIN );
+        _227:
+        
+        if ( 1 )
+        {
+            var20 = EVT_FUNCTION_001D( var22, var21 );
+            
+            if ( var20 == 0 )
+            {
+                goto _228;
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            FUNCTION_0055( 1, 2 );
+            var21 = ( var21 + 1 );
+            goto _227;
+        }
+
+        _228:
+        var21 = 0;
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var22 ) == 10 )
+        {
+            MSG( ZOKUSEI_NOMORE );
+        }
+        else 
+        {
+            MSG( ZOKUSEI_NOTYET );
+        }
+
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        goto sentakuloop4;
+        return;
+    }
+    else if ( CMM_GET_LV( var22 ) < 10 )
+    {
+        MSG( SCR_MSG_MITURU_01_NO );
+    }
+
+    MSG_WND_CLS();
+    return;
+}
+
+void SCR_CMM_K_AIGISU_hook()
+{
+    int var28;
+    int var25;
+    int var27;
+    int var26;
+    var28 = 8;
+    MSG_WND_DSP();
+    
+    if ( CMM_GET_LV( var28 ) == 10 )
+    {
+        MSG( SCR_MSG_AEGIS_MAX );
+        MSG_WND_CLS();
+        return;
+    }
+
+    
+    if ( ( CMM_GET_LV( var28 ) == 9 ) && ( CMM_CHK_LVUP( var28 ) == 1 ) )
+    {
+        MSG( SCR_MSG_AEGIS_lv10 );
+    }
+    else 
+    {
+        MSG( SCR_MSG_AEGIS_01 );
+    }
+
+    EVT_FUNCTION_0014( var28 );
+    
+    if ( ( CMM_GET_LV( var28 ) != 10 ) && ( EVT_FUNCTION_001A( var28 ) != 0 ) )
+    {
+        MSG( MSG_DOUZOKUSEI );
+    }
+
+    if(CMM_CHK_LVUP(var28))
+    {
+        MSG(RankupReady);
+    }
+
+    sentakuloop5:
+    MSG_WND_CLS();
+    MSG_WND_DSP();
+    MSG( SCR_MSG_AEGIS_02 );
+    SEL_DEFKEY( 14, 2 );
+    var25 = SEL( AEGIS_COMMU_SEL );
+    
+    if ( var25 == 0 )
+    {
+        EVT_FUNCTION_000C( 0, 8 );
+        
+        if ( CMM_CHK_LVUP( var28 ) == 1 )
+        {
+            
+            if ( CMM_GET_LV( var28 ) == 9 )
+            {
+                MSG( SCR_MSG_AEGIS_lv10_YES );
+            }
+            else 
+            {
+                MSG( SCR_MSG_AEGIS_01_YES );
+            }
+
+            EVT_FUNCTION_0007( var28 );
+        }
+        else 
+        {
+            MSG( SCR_MSG_AEGIS_01_YES );
+        }
+
+        MSG_WND_CLS();
+        FADE( 3, 0 );
+        FUNCTION_000F();
+        BIT_ON( 3068 );
+        EVT_FUNCTION_000D();
+        NEXT_TIME();
+        return;
+    }
+    else if ( var25 == 1 )
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        EVT_FUNCTION_0014( var28 );
+        MSG( ZOKUSEI_KAKUNIN );
+        _287:
+        
+        if ( 1 )
+        {
+            var26 = EVT_FUNCTION_001D( var28, var27 );
+            
+            if ( var26 == 0 )
+            {
+                goto _288;
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            FUNCTION_0055( 1, 2 );
+            var27 = ( var27 + 1 );
+            goto _287;
+        }
+
+        _288:
+        var27 = 0;
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var28 ) == 10 )
+        {
+            MSG( ZOKUSEI_NOMORE );
+        }
+        else 
+        {
+            MSG( ZOKUSEI_NOTYET );
+        }
+
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        goto sentakuloop5;
+        return;
+    }
+    else 
+    {
+        MSG( SCR_MSG_AEGIS_01_NO );
+        MSG_WND_CLS();
+        return;
+    }
+
+}
+
+void SCR_CMM_K_TAIKU__hook()
+{
+    int var33;
+    int var30;
+    int var32;
+    int var31;
+    var33 = 9;
+    MSG_WND_DSP();
+    
+    if ( EVT_FUNCTION_0010( var33 ) == 1 )
+    {
+        
+        if ( BIT_CHK( 3058 ) )
+        {
+            MSG( MANAG_REV_AGAIN );
+            MSG_WND_CLS();
+            return;
+        }
+        else if ( GET_COUNT( 103 ) == 0 )
+        {
+            MSG( MANAG_REV_01 );
+            SET_COUNT( 103, 1 );
+        }
+        else 
+        {
+            MSG( MANAG_REV_02 );
+        }
+
+        BIT_ON( 3058 );
+        var30 = SEL( REV_SEL );
+        
+        if ( var30 == 2 )
+        {
+            MSG( MANAG_REV_NO );
+        }
+        else 
+        {
+            SET_COUNT( 103, ( GET_COUNT( 103 ) + 1 ) );
+            
+            if ( GET_COUNT( 103 ) >= 4 )
+            {
+                MSG( MANAG_REV_RELEASE );
+                MSG( REV_RELEASE );
+                EVT_FUNCTION_0012( var33, 0 );
+                SET_COUNT( 103, 0 );
+                FADE( 1, 0 );
+                CALL_FIELD( 6, 4, 3, 0 );
+                return;
+            }
+            else 
+            {
+                MSG( MANAG_REV_NOT_RELEASE );
+                MSG( REV_NOTRELEASE );
+            }
+
+        }
+
+        MSG_WND_CLS();
+        return;
+    }
+    else if ( CMM_GET_LV( var33 ) >= 4 )
+    {
+        
+        if ( !BIT_CHK( 2650 ) )
+        {
+            MSG( TAIIKUKAI_K_HAKAISOU );
+            BIT_ON( 2650 );
+            MSG_WND_CLS();
+            return;
+        }
+
+    }
+
+    
+    if ( CMM_GET_LV( var33 ) == 10 )
+    {
+        MSG( SCR_MSG_MANAGER_MAX );
+    }
+    else if ( ( CMM_GET_LV( var33 ) == 5 ) && ( CMM_CHK_LVUP( var33 ) == 1 ) )
+    {
+        MSG( SCR_MSG_TAIIKUKAI_K_lv6 );
+    }
+    else if ( ( CMM_GET_LV( var33 ) == 6 ) && ( CMM_CHK_LVUP( var33 ) == 1 ) )
+    {
+        MSG( SCR_MSG_TAIIKUKAI_K_lv6 );
+    }
+    else if ( ( CMM_GET_LV( var33 ) == 9 ) && ( CMM_CHK_LVUP( var33 ) == 1 ) )
+    {
+        MSG( SCR_MSG_TAIIKUKAI_K_lv10 );
+    }
+    else 
+    {
+        MSG( SCR_MSG_TAIIKUKAI_K_01 );
+    }
+
+    EVT_FUNCTION_0014( var33 );
+    
+    if ( ( CMM_GET_LV( var33 ) != 10 ) && ( EVT_FUNCTION_001A( var33 ) != 0 ) )
+    {
+        MSG( MSG_DOUZOKUSEI );
+    }
+
+    if(CMM_CHK_LVUP(var33))
+    {
+        MSG(RankupReady);
+    }
+
+    sentakuloop6:
+    MSG_WND_CLS();
+    MSG_WND_DSP();
+    
+    if ( CMM_GET_LV( var33 ) == 10 )
+    {
+        MSG( KOIBITO_AFTERMAX_YESNO );
+    }
+    else 
+    {
+        MSG( SCR_MSG_TAIIKUKAI_K_02 );
+    }
+
+    SEL_DEFKEY( 14, 2 );
+    var30 = SEL( MANAGER_COMMU_SEL );
+    
+    if ( var30 == 0 )
+    {
+        
+        if ( CMM_GET_LV( var33 ) == 10 )
+        {
+            MSG( MANAGER_AFTERMAX_YES );
+            MSG_WND_CLS();
+            FADE( 3, 0 );
+            FUNCTION_000F();
+            CALL_EVENT( 600, 101 );
+            NEXT_TIME();
+            return;
+        }
+        else 
+        {
+            EVT_FUNCTION_000C( 0, 9 );
+            
+            if ( CMM_CHK_LVUP( var33 ) == 1 )
+            {
+                
+                if ( CMM_GET_LV( var33 ) == 5 )
+                {
+                    MSG( SCR_MSG_TAIIKUKAI_K_lv6_ );
+                }
+                else if ( CMM_GET_LV( var33 ) == 6 )
+                {
+                    MSG( SCR_MSG_TAIIKUKAI_K_lv6_ );
+                }
+                else if ( CMM_GET_LV( var33 ) == 7 )
+                {
+                    MSG( SCR_MSG_TAIIKUKAI_lv8_YE );
+                }
+                else if ( CMM_GET_LV( var33 ) == 9 )
+                {
+                    MSG( SCR_MSG_TAIIKUKAI_lv10_Y );
+                }
+                else 
+                {
+                    MSG( SCR_MSG_TAIIKUKAI_K_DATE );
+                }
+
+                EVT_FUNCTION_0007( var33 );
+                BIT_OFF( 1828 );
+            }
+            else 
+            {
+                MSG( SCR_MSG_TAIIKUKAI_K_DATE );
+            }
+
+            MSG_WND_CLS();
+            FADE( 3, 0 );
+            FUNCTION_000F();
+            EVT_FUNCTION_000D();
+            NEXT_TIME();
+            return;
+        }
+
+    }
+    else if ( var30 == 1 )
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        EVT_FUNCTION_0014( var33 );
+        MSG( ZOKUSEI_KAKUNIN );
+        _335:
+        
+        if ( 1 )
+        {
+            var31 = EVT_FUNCTION_001D( var33, var32 );
+            
+            if ( var31 == 0 )
+            {
+                goto _336;
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            FUNCTION_0055( 1, 2 );
+            var32 = ( var32 + 1 );
+            goto _335;
+        }
+
+        _336:
+        var32 = 0;
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var33 ) == 10 )
+        {
+            MSG( ZOKUSEI_NOMORE );
+        }
+        else 
+        {
+            MSG( ZOKUSEI_NOTYET );
+        }
+
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        goto sentakuloop6;
+        return;
+    }
+    else if ( CMM_GET_LV( var33 ) < 10 )
+    {
+        MSG( SCR_MSG_TAIIKUKAI_K_01_N );
+    }
+
+    MSG_WND_CLS();
+    return;
+}
+
+void SCR_CMM_K_SEITOK_hook()
+{
+    int var37;
+    int var34;
+    int var36;
+    int var35;
+    var37 = 10;
+    MSG_WND_DSP();
+    
+    if ( EVT_FUNCTION_0010( var37 ) == 1 )
+    {
+        
+        if ( BIT_CHK( 3059 ) )
+        {
+            MSG( KAIKE_REV_AGAIN );
+            MSG_WND_CLS();
+            return;
+        }
+        else if ( GET_COUNT( 104 ) == 0 )
+        {
+            MSG( KAIKE_REV_01 );
+            SET_COUNT( 104, 1 );
+        }
+        else 
+        {
+            MSG( KAIKE_REV_02 );
+        }
+
+        BIT_ON( 3059 );
+        var34 = SEL( REV_SEL );
+        
+        if ( var34 == 2 )
+        {
+            MSG( KAIKE_REV_NO );
+        }
+        else 
+        {
+            SET_COUNT( 104, ( GET_COUNT( 104 ) + 1 ) );
+            
+            if ( GET_COUNT( 104 ) >= 4 )
+            {
+                MSG( KAIKE_REV_RELEASE );
+                MSG( REV_RELEASE );
+                EVT_FUNCTION_0012( var37, 0 );
+                SET_COUNT( 104, 0 );
+                FADE( 1, 0 );
+                CALL_FIELD( 6, 4, 11, 0 );
+                return;
+            }
+            else 
+            {
+                MSG( KAIKE_REV_NOT_RELEASE );
+                MSG( REV_NOTRELEASE );
+            }
+
+        }
+
+        MSG_WND_CLS();
+        return;
+    }
+    else if ( CMM_GET_LV( var37 ) == 10 )
+    {
+        MSG( SCR_MSG_KAIKEI_MAX );
+    }
+    else 
+    {
+        MSG( SCR_MSG_KAIKEI_01 );
+        EVT_FUNCTION_0014( var37 );
+        
+        if ( ( CMM_GET_LV( var37 ) != 10 ) && ( EVT_FUNCTION_001A( var37 ) != 0 ) )
+        {
+            MSG( MSG_DOUZOKUSEI );
+        }
+        
+        if(CMM_CHK_LVUP(var37))
+        {
+            MSG(RankupReady);
+        }
+    }
+
+
+    sentakuloop7:
+    MSG_WND_CLS();
+    MSG_WND_DSP();
+    
+    if ( CMM_GET_LV( var37 ) == 10 )
+    {
+        MSG( KOIBITO_AFTERMAX_YESNO );
+    }
+    else 
+    {
+        MSG( SCR_MSG_KAIKEI_02 );
+    }
+
+    SEL_DEFKEY( 14, 2 );
+    var34 = SEL( KAIKEI_COMMU_SEL );
+    
+    if ( var34 == 0 )
+    {
+        
+        if ( CMM_GET_LV( var37 ) == 10 )
+        {
+            MSG( KAIKEI_AFTERMAX_YES );
+            MSG_WND_CLS();
+            FADE( 3, 0 );
+            FUNCTION_000F();
+            CALL_EVENT( 610, 101 );
+            NEXT_TIME();
+            return;
+        }
+        else 
+        {
+            EVT_FUNCTION_000C( 0, 10 );
+            
+            if ( CMM_CHK_LVUP( var37 ) == 1 )
+            {
+                
+                if ( CMM_GET_LV( var37 ) == 2 )
+                {
+                    MSG( SCR_MSG_KAIKEI_lv3_YES );
+                }
+                else if ( CMM_GET_LV( var37 ) == 7 )
+                {
+                    MSG( SCR_MSG_KAIKEI_lv3_YES );
+                }
+                else if ( CMM_GET_LV( var37 ) == 9 )
+                {
+                    MSG( SCR_MSG_KAIKEI_lv9_YES );
+                }
+                else if ( CMM_GET_LV( var37 ) == 8 )
+                {
+                    MSG( SCR_MSG_KAIKEI_lv8_YES );
+                }
+                else 
+                {
+                    MSG( SCR_MSG_KAIKEI_01_YES );
+                }
+
+                EVT_FUNCTION_0007( var37 );
+                BIT_OFF( 1829 );
+            }
+            else if ( CMM_GET_LV( var37 ) == 8 )
+            {
+                MSG( SCR_MSG_KAIKEI_lv8_YES );
+            }
+            else 
+            {
+                MSG( SCR_MSG_KAIKEI_01_YES );
+            }
+
+            MSG_WND_CLS();
+            FADE( 3, 0 );
+            FUNCTION_000F();
+            EVT_FUNCTION_000D();
+            NEXT_TIME();
+            return;
+        }
+
+    }
+    else if ( var34 == 1 )
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        EVT_FUNCTION_0014( var37 );
+        MSG( ZOKUSEI_KAKUNIN );
+        _377:
+        
+        if ( 1 )
+        {
+            var35 = EVT_FUNCTION_001D( var37, var36 );
+            
+            if ( var35 == 0 )
+            {
+                goto _378;
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            FUNCTION_0055( 1, 2 );
+            var36 = ( var36 + 1 );
+            goto _377;
+        }
+
+        _378:
+        var36 = 0;
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var37 ) == 10 )
+        {
+            MSG( ZOKUSEI_NOMORE );
+        }
+        else 
+        {
+            MSG( ZOKUSEI_NOTYET );
+        }
+
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        goto sentakuloop7;
+        return;
+    }
+    else if ( CMM_GET_LV( var37 ) < 10 )
+    {
+        MSG( SCR_MSG_KAIKEI_01_NO );
+    }
+
+    MSG_WND_CLS();
+    return;
+}
+
+void SCR_CMM_UNDOUBU__hook()
+{
+    int var43;
+    int var44;
+    int var40;
+    int var42;
+    int var41;
+    var43 = EVT_FUNCTION_002A( 0 );
+    var44 = 0;
+    MSG_WND_DSP();
+    
+    if ( !BIT_CHK( 2789 ) )
+    {
+        MSG( TAIIKUKAI_JUGYOU_NERU );
+        BIT_ON( 2789 );
+        MSG_WND_CLS();
+        return;
+    }
+
+    
+    if ( CMM_CHK_LVUP( var43 ) == 1 )
+    {
+        
+        if ( ( ( CMM_GET_LV( var43 ) == 3 ) || ( CMM_GET_LV( var43 ) == 4 ) ) || ( CMM_GET_LV( var43 ) == 5 ) )
+        {
+            MSG( SCR_MSG_TAIIKUKAI_NG );
+        }
+        else 
+        {
+            MSG( SCR_MSG_TAIIKUKAI_01 );
+        }
+
+    }
+    else 
+    {
+        MSG( SCR_MSG_TAIIKUKAI_01 );
+    }
+
+    EVT_FUNCTION_0014( var43 );
+    
+    if ( ( CMM_GET_LV( var43 ) != 10 ) && ( EVT_FUNCTION_001A( var43 ) != 0 ) )
+    {
+        MSG( MSG_DOUZOKUSEI );
+    }
+
+    if(CMM_CHK_LVUP(var43))
+    {
+        MSG(RankupReady);
+    }
+
+    sentakuloop8:
+    MSG_WND_CLS();
+    MSG_WND_DSP();
+    MSG( SCR_MSG_TAIIKUKAI_02 );
+    SEL_DEFKEY( 14, 2 );
+    var40 = SEL( TAIIKUKAI_COMMU_SEL );
+    
+    if ( var40 == 0 )
+    {
+        EVT_FUNCTION_000C( 0, var43 );
+        
+        if ( CMM_GET_LV( 9 ) == 0 )
+        {
+            
+            if ( ( CMM_CHK_LVUP( var43 ) == 1 ) && ( CMM_GET_LV( var43 ) >= 3 ) )
+            {
+                var44 = 0;
+            }
+            else 
+            {
+                var44 = 1;
+            }
+
+        }
+
+        
+        if ( CMM_CHK_LVUP( var43 ) == 1 )
+        {
+            
+            if ( ( ( CMM_GET_LV( var43 ) == 3 ) || ( CMM_GET_LV( var43 ) == 4 ) ) || ( CMM_GET_LV( var43 ) == 5 ) )
+            {
+                MSG( SCR_MSG_TAIIKUKAI_02_YES );
+            }
+            else 
+            {
+                MSG( SCR_MSG_TAIIKUKAI_01_YES );
+            }
+
+            EVT_FUNCTION_0007( var43 );
+            BIT_OFF( 1830 );
+        }
+        else 
+        {
+            MSG( SCR_MSG_TAIIKUKAI_01_YES );
+        }
+
+        MSG_WND_CLS();
+        FADE( 3, 0 );
+        EVT_FUNCTION_000D();
+        
+        if ( var44 == 1 )
+        {
+            
+            if ( BIT_CHK( 1840 ) )
+            {
+                CALL_EVENT( 600, 114 );
+                
+                if ( BIT_CHK( 1841 ) )
+                {
+                    EVT_FUNCTION_000C( 0, 9 );
+                    EVT_FUNCTION_000D();
+                    EVT_FUNCTION_0004( 9 );
+                    BIT_ON( 2665 );
+                    NEXT_TIME();
+                    return;
+                }
+
+                NEXT_TIME();
+                return;
+            }
+            else 
+            {
+                CALL_EVENT( 600, 115 );
+            }
+
+            NEXT_TIME();
+            return;
+        }
+
+        NEXT_TIME();
+        return;
+    }
+    else if ( var40 == 1 )
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        EVT_FUNCTION_0014( var43 );
+        MSG( ZOKUSEI_KAKUNIN );
+        _441:
+        
+        if ( 1 )
+        {
+            var41 = EVT_FUNCTION_001D( var43, var42 );
+            
+            if ( var41 == 0 )
+            {
+                goto _442;
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            FUNCTION_0055( 1, 2 );
+            var42 = ( var42 + 1 );
+            goto _441;
+        }
+
+        _442:
+        var42 = 0;
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var43 ) == 10 )
+        {
+            MSG( ZOKUSEI_NOMORE );
+        }
+        else 
+        {
+            MSG( ZOKUSEI_NOTYET );
+        }
+
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        goto sentakuloop8;
+        return;
+    }
+    else 
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        
+        if ( CMM_CHK_LVUP( var43 ) == 1 )
+        {
+            
+            if ( ( ( CMM_GET_LV( var43 ) == 3 ) || ( CMM_GET_LV( var43 ) == 4 ) ) || ( CMM_GET_LV( var43 ) == 5 ) )
+            {
+                MSG( SCR_MSG_TAIIKUKAI_02_NO );
+            }
+            else 
+            {
+                MSG( SCR_MSG_TAIIKUKAI_01_NO );
+            }
+
+        }
+        else 
+        {
+            MSG( SCR_MSG_TAIIKUKAI_01_NO );
+        }
+
+        MSG_WND_CLS();
+        return;
+    }
+
+}
+
+void SCR_CMM_BUNKABU__hook()
+{
+    int var48;
+    int var45;
+    int var47;
+    int var46;
+    var48 = EVT_FUNCTION_002A( 1 );
+    MSG_WND_DSP();
+    
+    if ( ( CMM_GET_LV( var48 ) == 8 ) && ( CMM_CHK_LVUP( var48 ) == 1 ) )
+    {
+        MSG( SCR_MSG_BUNKABU_lv9 );
+    }
+    else if ( ( CMM_GET_LV( var48 ) == 3 ) && ( CMM_CHK_LVUP( var48 ) == 1 ) )
+    {
+        MSG( SCR_MSG_BUNKABU_lv4 );
+    }
+    else 
+    {
+        MSG( SCR_MSG_BUNKABU_01 );
+    }
+
+    EVT_FUNCTION_0014( var48 );
+    
+    if ( ( CMM_GET_LV( var48 ) != 10 ) && ( EVT_FUNCTION_001A( var48 ) != 0 ) )
+    {
+        MSG( MSG_DOUZOKUSEI );
+    }
+
+    if(CMM_CHK_LVUP(var48))
+    {
+        MSG(RankupReady);
+    }
+
+    sentakuloop9:
+    MSG_WND_CLS();
+    MSG_WND_DSP();
+    MSG( SCR_MSG_BUNKABU_02 );
+    SEL_DEFKEY( 14, 2 );
+    var45 = SEL( BUNKABU_COMMU_SEL );
+    
+    if ( var45 == 0 )
+    {
+        EVT_FUNCTION_000C( 0, var48 );
+        
+        if ( CMM_CHK_LVUP( var48 ) == 1 )
+        {
+            
+            if ( CMM_GET_LV( var48 ) == 3 )
+            {
+                MSG( SCR_MSG_BUNKABU_lv4_YES );
+                MSG_WND_CLS();
+                FADE( 1, 0 );
+                FUNCTION_000F();
+                MSG_WND_DSP();
+                MSG( SCR_MSG_BUNKABU_lv4_YES_ );
+                MSG( SCR_MSG_BUNKABU_lv4_YES__2 );
+            }
+            else 
+            {
+                MSG( SCR_MSG_BUNKABU_01_YES );
+            }
+
+            EVT_FUNCTION_0007( var48 );
+            BIT_OFF( 1831 );
+        }
+        else 
+        {
+            MSG( SCR_MSG_BUNKABU_01_YES );
+        }
+
+        MSG_WND_CLS();
+        FADE( 3, 0 );
+        FUNCTION_000F();
+        EVT_FUNCTION_000D();
+        NEXT_TIME();
+        return;
+    }
+    else if ( var45 == 1 )
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        EVT_FUNCTION_0014( var48 );
+        MSG( ZOKUSEI_KAKUNIN );
+        _474:
+        
+        if ( 1 )
+        {
+            var46 = EVT_FUNCTION_001D( var48, var47 );
+            
+            if ( var46 == 0 )
+            {
+                goto _475;
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            FUNCTION_0055( 1, 2 );
+            var47 = ( var47 + 1 );
+            goto _474;
+        }
+
+        _475:
+        var47 = 0;
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var48 ) == 10 )
+        {
+            MSG( ZOKUSEI_NOMORE );
+        }
+        else 
+        {
+            MSG( ZOKUSEI_NOTYET );
+        }
+
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        goto sentakuloop9;
+        return;
+    }
+    else 
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        MSG( SCR_MSG_BUNKABU_01_NO );
+        MSG_WND_CLS();
+        return;
+    }
+
+}
+
+void SCR_CMM_KODOMO___hook()
+{
+    int var53;
+    int var50;
+    int var52;
+    int var51;
+    var53 = 18;
+    MSG_WND_DSP();
+    
+    if ( ( CMM_GET_LV( var53 ) == 6 ) && ( CMM_CHK_LVUP( var53 ) == 1 ) )
+    {
+        MSG( SCR_MSG_KODOMO_lv7 );
+    }
+    else if ( ( CMM_GET_LV( var53 ) == 3 ) && ( CMM_CHK_LVUP( var53 ) == 1 ) )
+    {
+        MSG( SCR_MSG_KODOMO_lv4 );
+    }
+    else if ( ( CMM_GET_LV( var53 ) == 4 ) && ( CMM_CHK_LVUP( var53 ) == 1 ) )
+    {
+        MSG( SCR_MSG_KODOMO_lv5 );
+    }
+    else if ( ( CMM_GET_LV( var53 ) == 5 ) && ( CMM_CHK_LVUP( var53 ) == 1 ) )
+    {
+        MSG( SCR_MSG_KODOMO_lv5 );
+    }
+    else if ( BIT_CHK( 2575 ) && !BIT_CHK( 2792 ) )
+    {
+        MSG( SCR_MSG_KODOMO_KYUJITU );
+        BIT_ON( 2792 );
+    }
+    else 
+    {
+        MSG( SCR_MSG_KODOMO_01 );
+    }
+
+    EVT_FUNCTION_0014( var53 );
+    
+    if ( ( CMM_GET_LV( var53 ) != 10 ) && ( EVT_FUNCTION_001A( var53 ) != 0 ) )
+    {
+        MSG( MSG_DOUZOKUSEI );
+    }
+
+    if(CMM_CHK_LVUP(var53))
+    {
+        MSG(RankupReady);
+    }
+
+    sentakuloop10:
+    MSG_WND_CLS();
+    MSG_WND_DSP();
+    
+    if ( FUNCTION_0033() == 3 )
+    {
+        MSG( SCR_MSG_KODOMO_03 );
+    }
+    else 
+    {
+        MSG( SCR_MSG_KODOMO_02 );
+    }
+
+    SEL_DEFKEY( 14, 2 );
+    var50 = SEL( KODOMO_COMMU_SEL );
+    
+    if ( var50 == 0 )
+    {
+        EVT_FUNCTION_000C( 0, var53 );
+        
+        if ( CMM_CHK_LVUP( var53 ) == 1 )
+        {
+            
+            if ( CMM_GET_LV( var53 ) == 6 )
+            {
+                MSG( SCR_MSG_KODOMO_lv7_YES );
+            }
+            else if ( CMM_GET_LV( var53 ) == 4 )
+            {
+                MSG( SCR_MSG_KODOMO_lv5_YES );
+            }
+            else if ( CMM_GET_LV( var53 ) == 5 )
+            {
+                MSG( SCR_MSG_KODOMO_lv5_YES );
+            }
+            else 
+            {
+                MSG( SCR_MSG_KODOMO_01_YES );
+            }
+
+            EVT_FUNCTION_0007( var53 );
+        }
+        else 
+        {
+            MSG( SCR_MSG_KODOMO_01_YES );
+        }
+
+        MSG_WND_CLS();
+        FADE( 3, 0 );
+        FUNCTION_000F();
+        EVT_FUNCTION_000D();
+        NEXT_TIME();
+        return;
+    }
+    else if ( var50 == 1 )
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        EVT_FUNCTION_0014( var53 );
+        MSG( ZOKUSEI_KAKUNIN );
+        _505:
+        
+        if ( 1 )
+        {
+            var51 = EVT_FUNCTION_001D( var53, var52 );
+            
+            if ( var51 == 0 )
+            {
+                goto _506;
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            FUNCTION_0055( 1, 2 );
+            var52 = ( var52 + 1 );
+            goto _505;
+        }
+
+        _506:
+        var52 = 0;
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var53 ) == 10 )
+        {
+            MSG( ZOKUSEI_NOMORE );
+        }
+        else 
+        {
+            MSG( ZOKUSEI_NOTYET );
+        }
+
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        goto sentakuloop10;
+        return;
+    }
+    else 
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var53 ) == 6 )
+        {
+            MSG( SCR_MSG_KODOMO_lv5_NO );
+        }
+        else if ( CMM_GET_LV( var53 ) == 4 )
+        {
+            MSG( SCR_MSG_KODOMO_lv5_NO );
+        }
+        else if ( CMM_GET_LV( var53 ) == 5 )
+        {
+            MSG( SCR_MSG_KODOMO_lv5_NO );
+        }
+        else 
+        {
+            MSG( SCR_MSG_KODOMO_01_NO );
+        }
+
+        MSG_WND_CLS();
+        return;
+    }
+
+}
+
+void SCR_CMM_DOUKOUKA_hook()
+{
+    int var61;
+    int var58;
+    int var60;
+    int var59;
+    var61 = 20;
+    MSG_WND_DSP();
+    
+    if ( ( CMM_GET_LV( var61 ) == 3 ) && ( CMM_CHK_LVUP( var61 ) == 1 ) )
+    {
+        MSG( SCR_MSG_DOUKOUKAI_lv4 );
+    }
+    else if ( ( CMM_GET_LV( var61 ) >= 4 ) && ( CMM_GET_LV( var61 ) < 7 ) )
+    {
+        MSG( SCR_MSG_DOUKOUKAI_lv4_6 );
+    }
+    else 
+    {
+        MSG( SCR_MSG_DOUKOUKAI_01 );
+    }
+
+    EVT_FUNCTION_0014( var61 );
+    
+    if ( ( CMM_GET_LV( var61 ) != 10 ) && ( EVT_FUNCTION_001A( var61 ) != 0 ) )
+    {
+        MSG( MSG_DOUZOKUSEI );
+    }
+
+    if(CMM_CHK_LVUP(var61))
+    {
+        MSG(RankupReady);
+    }
+
+    sentakuloop11:
+    MSG_WND_CLS();
+    MSG_WND_DSP();
+    MSG( SCR_MSG_DOUKOUKAI_02 );
+    SEL_DEFKEY( 14, 2 );
+    var58 = SEL( DOUKOUKAI_COMMU_SEL );
+    
+    if ( var58 == 0 )
+    {
+        EVT_FUNCTION_000C( 0, var61 );
+        
+        if ( CMM_CHK_LVUP( var61 ) == 1 )
+        {
+            
+            if ( ( CMM_GET_LV( var61 ) >= 3 ) && ( CMM_GET_LV( var61 ) < 7 ) )
+            {
+                MSG( SCR_MSG_DOUKOUKAI_lv4_YE );
+            }
+            else 
+            {
+                MSG( SCR_MSG_DOUKOUKAI_01_YES );
+            }
+
+            EVT_FUNCTION_0007( var61 );
+            BIT_OFF( 1832 );
+        }
+        else if ( ( CMM_GET_LV( var61 ) >= 3 ) && ( CMM_GET_LV( var61 ) < 7 ) )
+        {
+            MSG( SCR_MSG_DOUKOUKAI_lv4_YE );
+        }
+        else 
+        {
+            MSG( SCR_MSG_DOUKOUKAI_01_YES );
+        }
+
+        MSG_WND_CLS();
+        FADE( 3, 0 );
+        FUNCTION_000F();
+        EVT_FUNCTION_000D();
+        NEXT_TIME();
+        return;
+    }
+    else if ( var58 == 1 )
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        EVT_FUNCTION_0014( var61 );
+        MSG( ZOKUSEI_KAKUNIN );
+        _555:
+        
+        if ( 1 )
+        {
+            var59 = EVT_FUNCTION_001D( var61, var60 );
+            
+            if ( var59 == 0 )
+            {
+                goto _556;
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            FUNCTION_0055( 1, 2 );
+            var60 = ( var60 + 1 );
+            goto _555;
+        }
+
+        _556:
+        var60 = 0;
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var61 ) == 10 )
+        {
+            MSG( ZOKUSEI_NOMORE );
+        }
+        else 
+        {
+            MSG( ZOKUSEI_NOTYET );
+        }
+
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        goto sentakuloop11;
+        return;
+    }
+    else 
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        
+        if ( ( CMM_GET_LV( var61 ) >= 3 ) && ( CMM_GET_LV( var61 ) < 7 ) )
+        {
+            MSG( SCR_MSG_DOUKOUKAI_lv4_NO );
+        }
+        else 
+        {
+            MSG( SCR_MSG_DOUKOUKAI_01_NO );
+        }
+
+        MSG_WND_CLS();
+        return;
+    }
+
+}
+
+void SCR_CMM_JAPANET__hook()
+{
+    int var65;
+    int var62;
+    int var64;
+    int var63;
+    var65 = 21;
+    MSG_WND_DSP();
+    
+    if ( CMM_GET_LV( var65 ) == 0 )
+    {
+        
+        if ( SHD_FUNCTION_0002( 1 ) < 4 )
+        {
+            MSG( TANAKA_MADA );
+            
+            if ( SEL( TANAKA_MADA_SEL ) == 0 )
+            {
+                MSG( TANAKA_MADA_NG );
+            }
+            else 
+            {
+                MSG( TANAKA_MADA_NO );
+            }
+
+        }
+        else if ( BIT_CHK( 2745 ) )
+        {
+            
+            if ( !BIT_CHK( 2747 ) )
+            {
+                MSG( TANAKA_KANE_2_MOTTEKOI_0_2 );
+                
+                if ( SEL( TANAKA_MOUKE_2_SEL_2 ) == 0 )
+                {
+                    MSG_WND_CLS();
+                    
+                    if ( ADD_PC_MONEY( 0 ) < 10000 )
+                    {
+                        MSG_WND_DSP();
+                        MSG( TANAKA_KANE_NAI_01 );
+                        MSG( TANAKA_KANE_NAI_02 );
+                    }
+                    else 
+                    {
+                        FADE( 1, 0 );
+                        FUNCTION_000F();
+                        FUNCTION_000D( 0 );
+                        FUNCTION_000F();
+                        MSG_WND_DSP();
+                        MSG( TANAKA_KANE_2_WATASU_01 );
+                        BIT_ON( 2747 );
+                        BIT_ON( 3052 );
+                        ADD_PC_MONEY( -10000 );
+                        MSG( TANAKA_KANE_WATASU_02 );
+                    }
+
+                }
+                else 
+                {
+                    MSG( TANAKA_KANE_NORANAI );
+                }
+
+            }
+            else if ( BIT_CHK( 3052 ) )
+            {
+                MSG( TANAKA_KANE_WATASU_02 );
+            }
+            else 
+            {
+                MSG( TANAKA_MOUKE_03 );
+                
+                if ( SEL( TANAKA_MOUKE_2_SEL_2 ) == 0 )
+                {
+                    MSG_WND_CLS();
+                    
+                    if ( ADD_PC_MONEY( 0 ) < 10000 )
+                    {
+                        MSG_WND_DSP();
+                        MSG( TANAKA_KANE_NAI_01 );
+                        MSG( TANAKA_KANE_NAI_02 );
+                    }
+                    else 
+                    {
+                        FADE( 1, 0 );
+                        FUNCTION_000F();
+                        FUNCTION_000D( 0 );
+                        FUNCTION_000F();
+                        MSG_WND_DSP();
+                        MSG( TANAKA_KANE_2_WATASU_01 );
+                        ADD_PC_MONEY( -10000 );
+                        MSG( TANAKA_MOUKE_TYUUSI );
+                        MSG_WND_CLS();
+                        FADE( 1, 0 );
+                        EVT_FUNCTION_000C( 0, var65 );
+                        EVT_FUNCTION_000D();
+                        EVT_FUNCTION_0004( var65 );
+                        
+                        if ( FUNCTION_0033() == 5 )
+                        {
+                            BIT_ON( 3195 );
+                            
+                            if ( BIT_CHK( 4104 ) )
+                            {
+                                CALL_FIELD( 7, 19, 0, 0 );
+                            }
+                            else 
+                            {
+                                CALL_FIELD( 7, 20, 0, 0 );
+                            }
+
+                        }
+                        else 
+                        {
+                            NEXT_TIME();
+                        }
+
+                        return;
+                    }
+
+                }
+                else 
+                {
+                    MSG( TANAKA_KANE_NORANAI );
+                }
+
+            }
+
+        }
+        else if ( BIT_CHK( 2744 ) )
+        {
+            
+            if ( !BIT_CHK( 2746 ) )
+            {
+                MSG( TANAKA_KANE_1_MOTTEKOI_0_2 );
+                
+                if ( SEL( TANAKA_MOUKE_SEL ) == 0 )
+                {
+                    MSG_WND_CLS();
+                    
+                    if ( ADD_PC_MONEY( 0 ) < 20000 )
+                    {
+                        MSG_WND_DSP();
+                        MSG( TANAKA_KANE_NAI_01 );
+                        MSG( TANAKA_KANE_NAI_02 );
+                    }
+                    else 
+                    {
+                        FADE( 1, 0 );
+                        FUNCTION_000F();
+                        FUNCTION_000D( 0 );
+                        FUNCTION_000F();
+                        MSG_WND_DSP();
+                        MSG( TANAKA_KANE_WATASU_01 );
+                        BIT_ON( 2746 );
+                        BIT_ON( 3052 );
+                        ADD_PC_MONEY( -20000 );
+                        MSG( TANAKA_KANE_WATASU_02 );
+                    }
+
+                }
+                else 
+                {
+                    MSG( TANAKA_KANE_NORANAI );
+                }
+
+            }
+            else if ( BIT_CHK( 3052 ) )
+            {
+                MSG( TANAKA_KANE_WATASU_02 );
+            }
+            else 
+            {
+                MSG( TANAKA_MOUKE_02 );
+                BIT_ON( 2745 );
+                BIT_ON( 3052 );
+                
+                if ( SEL( TANAKA_MOUKE_2_SEL_2 ) == 0 )
+                {
+                    MSG_WND_CLS();
+                    
+                    if ( ADD_PC_MONEY( 0 ) < 10000 )
+                    {
+                        MSG_WND_DSP();
+                        MSG( TANAKA_KANE_NAI_01 );
+                        MSG( TANAKA_KANE_NAI_02 );
+                    }
+                    else 
+                    {
+                        FADE( 1, 0 );
+                        FUNCTION_000F();
+                        FUNCTION_000D( 0 );
+                        FUNCTION_000F();
+                        MSG_WND_DSP();
+                        MSG( TANAKA_KANE_2_WATASU_01 );
+                        BIT_ON( 2747 );
+                        ADD_PC_MONEY( -10000 );
+                        MSG( TANAKA_KANE_WATASU_02 );
+                    }
+
+                }
+                else 
+                {
+                    MSG( TANAKA_KANE_NORANAI );
+                }
+
+            }
+
+        }
+        else 
+        {
+            MSG( TANAKA_MIRYOKU_TARITERU );
+            
+            if ( SEL( TANAKA_TARITERU_SEL ) == 0 )
+            {
+                MSG( TANAKA_MOUKE_01 );
+                BIT_ON( 2744 );
+                BIT_ON( 3052 );
+                
+                if ( SEL( TANAKA_MOUKE_SEL ) == 0 )
+                {
+                    MSG_WND_CLS();
+                    
+                    if ( ADD_PC_MONEY( 0 ) < 20000 )
+                    {
+                        MSG_WND_DSP();
+                        MSG( TANAKA_KANE_NAI_01 );
+                        MSG( TANAKA_KANE_NAI_02 );
+                    }
+                    else 
+                    {
+                        FADE( 1, 0 );
+                        FUNCTION_000F();
+                        FUNCTION_000D( 0 );
+                        FUNCTION_000F();
+                        MSG_WND_DSP();
+                        MSG( TANAKA_KANE_WATASU_01 );
+                        BIT_ON( 2746 );
+                        ADD_PC_MONEY( -20000 );
+                        MSG( TANAKA_KANE_WATASU_02 );
+                    }
+
+                }
+                else 
+                {
+                    MSG( TANAKA_KANE_NORANAI );
+                }
+
+            }
+            else 
+            {
+                MSG( TANAKA_KANE_NORANAI );
+            }
+
+        }
+
+        MSG_WND_CLS();
+        return;
+    }
+    else 
+    {
+        MSG( SCR_MSG_TANAKA_01 );
+        EVT_FUNCTION_0014( var65 );
+        
+        if ( ( CMM_GET_LV( var65 ) != 10 ) && ( EVT_FUNCTION_001A( var65 ) != 0 ) )
+        {
+            MSG( MSG_DOUZOKUSEI );
+        }
+
+        if(CMM_CHK_LVUP(var65))
+        {
+            MSG(RankupReady);
+        }
+
+        sentakuloop12:
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        MSG( SCR_MSG_TANAKA_02 );
+        SEL_DEFKEY( 14, 2 );
+        var62 = SEL( TANAKA_COMMU_SEL );
+        
+        if ( var62 == 0 )
+        {
+            EVT_FUNCTION_000C( 0, var65 );
+            MSG( SCR_MSG_TANAKA_01_YES );
+            EVT_FUNCTION_0007( var65 );
+            MSG_WND_CLS();
+            FADE( 1, 0 );
+            FUNCTION_000F();
+            EVT_FUNCTION_000D();
+            
+            if ( FUNCTION_0033() == 5 )
+            {
+                BIT_ON( 3195 );
+                
+                if ( BIT_CHK( 4104 ) )
+                {
+                    CALL_FIELD( 7, 19, 0, 0 );
+                }
+                else 
+                {
+                    CALL_FIELD( 7, 20, 0, 0 );
+                }
+
+            }
+            else 
+            {
+                NEXT_TIME();
+            }
+
+            return;
+        }
+        else if ( var62 == 1 )
+        {
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            EVT_FUNCTION_0014( var65 );
+            MSG( ZOKUSEI_KAKUNIN );
+            _612:
+            
+            if ( 1 )
+            {
+                var63 = EVT_FUNCTION_001D( var65, var64 );
+                
+                if ( var63 == 0 )
+                {
+                    goto _613;
+                }
+
+                MSG_WND_CLS();
+                MSG_WND_DSP();
+                FUNCTION_0055( 1, 2 );
+                var64 = ( var64 + 1 );
+                goto _612;
+            }
+
+            _613:
+            var64 = 0;
+            MSG_WND_DSP();
+            
+            if ( CMM_GET_LV( var65 ) == 10 )
+            {
+                MSG( ZOKUSEI_NOMORE );
+            }
+            else 
+            {
+                MSG( ZOKUSEI_NOTYET );
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            goto sentakuloop12;
+            return;
+        }
+        else 
+        {
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            MSG( SCR_MSG_TANAKA_01_NO );
+        }
+
+        MSG_WND_CLS();
+        return;
+    }
+
+}
+
+void SCR_CMM_HAKAISOU_hook()
+{
+    int var69;
+    int var66;
+    int var68;
+    int var67;
+    var69 = 22;
+    MSG_WND_DSP();
+    
+    if ( FUNCTION_0030() == 3 )
+    {
+        
+        if ( CMM_GET_LV( var69 ) == 10 )
+        {
+            
+            if ( BIT_CHK( 2846 ) )
+            {
+                MSG( MARCH_HAKAI_4 );
+            }
+            else 
+            {
+                MSG( MARCH_HAKAI_1 );
+                MSG_WND_CLS();
+                FADE( 1, 0 );
+                MSG_WND_DSP();
+                MSG( MARCH_HAKAI_2 );
+                MSG_WND_CLS();
+                FUNCTION_000D( 10 );
+                MSG_WND_DSP();
+                MSG( MARCH_HAKAI_3 );
+                MSG_WND_CLS();
+                BIT_ON( 2846 );
+            }
+
+        }
+        else 
+        {
+            MSG( MARCH_HAKAI_VINCENT );
+        }
+
+        MSG_WND_CLS();
+        return;
+    }
+
+    
+    if ( CMM_GET_LV( var69 ) == 0 )
+    {
+        
+        if ( BIT_CHK( 2741 ) )
+        {
+            MSG( HAKAI_YUUKI_OK_02 );
+        }
+        else if ( SHD_FUNCTION_0002( 2 ) < 2 )
+        {
+            MSG( HAKAI_MADA );
+            MSG( HAKAI_MADA_2 );
+        }
+        else 
+        {
+            MSG( HAKAI_MADA );
+            MSG( HAKAI_YUUKI_OK );
+            MSG( HAKAI_YUUKI_OK_02 );
+            BIT_ON( 2741 );
+        }
+
+        MSG_WND_CLS();
+        return;
+    }
+    else if ( ( CMM_GET_LV( var69 ) >= 8 ) && ( CMM_CHK_LVUP( var69 ) == 1 ) )
+    {
+        MSG( SCR_MSG_HAKAI_lv9 );
+    }
+    else if ( CMM_GET_LV( var69 ) == 1 )
+    {
+        MSG( SCR_MSG_HAKAI_lv2 );
+    }
+    else 
+    {
+        MSG( SCR_MSG_HAKAI_01 );
+    }
+
+    EVT_FUNCTION_0014( var69 );
+    
+    if ( ( CMM_GET_LV( var69 ) != 10 ) && ( EVT_FUNCTION_001A( var69 ) != 0 ) )
+    {
+        MSG( MSG_DOUZOKUSEI );
+    }
+
+    if(CMM_CHK_LVUP(var69))
+    {
+        MSG(RankupReady);
+    }
+
+    sentakuloop13:
+    MSG_WND_CLS();
+    MSG_WND_DSP();
+    
+    if ( CMM_GET_LV( var69 ) == 1 )
+    {
+        MSG( SCR_MSG_HAKAI_02_lv2 );
+    }
+    else 
+    {
+        MSG( SCR_MSG_HAKAI_02 );
+    }
+
+    SEL_DEFKEY( 14, 2 );
+    
+    if ( CMM_GET_LV( var69 ) == 1 )
+    {
+        var66 = SEL( HAKAI_lv2_COMMU_SEL );
+    }
+    else 
+    {
+        var66 = SEL( HAKAI_COMMU_SEL );
+    }
+
+    
+    if ( var66 == 0 )
+    {
+        EVT_FUNCTION_000C( 0, var69 );
+        
+        if ( CMM_CHK_LVUP( var69 ) == 1 )
+        {
+            
+            if ( CMM_GET_LV( var69 ) == 1 )
+            {
+                MSG( SCR_MSG_HAKAI_lv2_YES );
+            }
+            else 
+            {
+                MSG( SCR_MSG_HAKAI_01_YES );
+            }
+
+            EVT_FUNCTION_0007( var69 );
+        }
+        else if ( CMM_GET_LV( var69 ) == 1 )
+        {
+            MSG( SCR_MSG_HAKAI_lv2_YES );
+        }
+        else 
+        {
+            MSG( SCR_MSG_HAKAI_01_YES );
+        }
+
+        MSG_WND_CLS();
+        FADE( 1, 0 );
+        FUNCTION_000F();
+        EVT_FUNCTION_000D();
+        
+        if ( FUNCTION_0033() == 5 )
+        {
+            BIT_ON( 3195 );
+            
+            if ( BIT_CHK( 4104 ) )
+            {
+                CALL_FIELD( 7, 19, 0, 0 );
+            }
+            else 
+            {
+                CALL_FIELD( 7, 20, 0, 0 );
+            }
+
+        }
+        else 
+        {
+            NEXT_TIME();
+        }
+
+        return;
+    }
+    else if ( var66 == 1 )
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        EVT_FUNCTION_0014( var69 );
+        MSG( ZOKUSEI_KAKUNIN );
+        _652:
+        
+        if ( 1 )
+        {
+            var67 = EVT_FUNCTION_001D( var69, var68 );
+            
+            if ( var67 == 0 )
+            {
+                goto _653;
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            FUNCTION_0055( 1, 2 );
+            var68 = ( var68 + 1 );
+            goto _652;
+        }
+
+        _653:
+        var68 = 0;
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var69 ) == 10 )
+        {
+            MSG( ZOKUSEI_NOMORE );
+        }
+        else 
+        {
+            MSG( ZOKUSEI_NOTYET );
+        }
+
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        goto sentakuloop13;
+        return;
+    }
+    else 
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var69 ) == 1 )
+        {
+            MSG( SCR_MSG_HAKAI_lv2_NO );
+        }
+        else 
+        {
+            MSG( SCR_MSG_HAKAI_01_NO );
+        }
+
+    }
+
+    MSG_WND_CLS();
+    return;
+}
+
+void SCR_CMM_TAKOUACE_hook()
+{
+    int var73;
+    int var70;
+    int var72;
+    int var71;
+    var73 = 23;
+    MSG_WND_DSP();
+    
+    if ( ( CMM_GET_LV( var73 ) == 5 ) && ( CMM_CHK_LVUP( var73 ) == 1 ) )
+    {
+        MSG( SCR_MSG_ACE_lv6 );
+    }
+    else if ( ( CMM_GET_LV( var73 ) == 6 ) && ( CMM_CHK_LVUP( var73 ) == 1 ) )
+    {
+        MSG( SCR_MSG_ACE_lv7 );
+    }
+    else 
+    {
+        MSG( SCR_MSG_ACE_01 );
+    }
+
+    EVT_FUNCTION_0014( var73 );
+    
+    if ( ( CMM_GET_LV( var73 ) != 10 ) && ( EVT_FUNCTION_001A( var73 ) != 0 ) )
+    {
+        MSG( MSG_DOUZOKUSEI );
+    }
+
+    if(CMM_CHK_LVUP(var73))
+    {
+        MSG(RankupReady);
+    }
+
+    sentakuloop14:
+    MSG_WND_CLS();
+    MSG_WND_DSP();
+    
+    if ( FUNCTION_0033() == 3 )
+    {
+        MSG( SCR_MSG_ACE_03 );
+    }
+    else 
+    {
+        MSG( SCR_MSG_ACE_02 );
+    }
+
+    SEL_DEFKEY( 14, 2 );
+    var70 = SEL( ACE_COMMU_SEL );
+    
+    if ( var70 == 0 )
+    {
+        EVT_FUNCTION_000C( 0, var73 );
+        
+        if ( CMM_CHK_LVUP( var73 ) == 1 )
+        {
+            
+            if ( CMM_GET_LV( var73 ) == 4 )
+            {
+                MSG( SCR_MSG_ACE_lv5_YES );
+            }
+            else if ( CMM_GET_LV( var73 ) == 5 )
+            {
+                MSG( SCR_MSG_ACE_lv6_YES );
+            }
+            else if ( CMM_GET_LV( var73 ) == 6 )
+            {
+                MSG( SCR_MSG_ACE_lv7_YES );
+            }
+            else 
+            {
+                MSG( SCR_MSG_ACE_01_YES );
+            }
+
+            EVT_FUNCTION_0007( var73 );
+        }
+        else 
+        {
+            MSG( SCR_MSG_ACE_01_YES );
+        }
+
+        MSG_WND_CLS();
+        FADE( 3, 0 );
+        FUNCTION_000F();
+        EVT_FUNCTION_000D();
+        NEXT_TIME();
+        return;
+    }
+    else if ( var70 == 1 )
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        EVT_FUNCTION_0014( var73 );
+        MSG( ZOKUSEI_KAKUNIN );
+        _678:
+        
+        if ( 1 )
+        {
+            var71 = EVT_FUNCTION_001D( var73, var72 );
+            
+            if ( var71 == 0 )
+            {
+                goto _679;
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            FUNCTION_0055( 1, 2 );
+            var72 = ( var72 + 1 );
+            goto _678;
+        }
+
+        _679:
+        var72 = 0;
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var73 ) == 10 )
+        {
+            MSG( ZOKUSEI_NOMORE );
+        }
+        else 
+        {
+            MSG( ZOKUSEI_NOTYET );
+        }
+
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        goto sentakuloop14;
+        return;
+    }
+    else 
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        MSG( SCR_MSG_ACE_01_NO );
+        MSG_WND_CLS();
+        return;
+    }
+
+}
+
+void SCR_CMM_SHUMATU__hook()
+{
+    int var78;
+    int var75;
+    int var77;
+    int var76;
+    var78 = 24;
+    MSG_WND_DSP();
+    
+    if ( BIT_CHK( 2575 ) && !BIT_CHK( 2807 ) )
+    {
+        MSG( SCR_MSG_SHUUMATU_01_KYUJ );
+        BIT_ON( 2807 );
+    }
+    else 
+    {
+        MSG( SCR_MSG_SHUUMATU_01 );
+    }
+
+    EVT_FUNCTION_0014( var78 );
+    
+    if ( ( CMM_GET_LV( var78 ) != 10 ) && ( EVT_FUNCTION_001A( var78 ) != 0 ) )
+    {
+        MSG( MSG_DOUZOKUSEI );
+    }
+
+    if(CMM_CHK_LVUP(var78))
+    {
+        MSG(RankupReady);
+    }
+
+    sentakuloop15:
+    MSG_WND_CLS();
+    MSG_WND_DSP();
+    
+    if ( FUNCTION_0033() == 3 )
+    {
+        MSG( SCR_MSG_SHUUMATU_03 );
+    }
+    else 
+    {
+        MSG( SCR_MSG_SHUUMATU_02 );
+    }
+
+    SEL_DEFKEY( 14, 2 );
+    var75 = SEL( SHUUMATU_COMMU_SEL );
+    
+    if ( var75 == 0 )
+    {
+        EVT_FUNCTION_000C( 0, var78 );
+        
+        if ( CMM_CHK_LVUP( var78 ) == 1 )
+        {
+            MSG( SCR_MSG_SHUUMATU_01_YES );
+            EVT_FUNCTION_0007( var78 );
+        }
+        else 
+        {
+            MSG( SCR_MSG_SHUUMATU_01_YES );
+        }
+
+        MSG_WND_CLS();
+        FADE( 3, 0 );
+        FUNCTION_000F();
+        EVT_FUNCTION_000D();
+        NEXT_TIME();
+        return;
+    }
+    else if ( var75 == 1 )
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        EVT_FUNCTION_0014( var78 );
+        MSG( ZOKUSEI_KAKUNIN );
+        _703:
+        
+        if ( 1 )
+        {
+            var76 = EVT_FUNCTION_001D( var78, var77 );
+            
+            if ( var76 == 0 )
+            {
+                goto _704;
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            FUNCTION_0055( 1, 2 );
+            var77 = ( var77 + 1 );
+            goto _703;
+        }
+
+        _704:
+        var77 = 0;
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var78 ) == 10 )
+        {
+            MSG( ZOKUSEI_NOMORE );
+        }
+        else 
+        {
+            MSG( ZOKUSEI_NOTYET );
+        }
+
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        goto sentakuloop15;
+        return;
+    }
+    else 
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        MSG( SCR_MSG_SHUUMATU_01_NO );
+        MSG_WND_CLS();
+        return;
+    }
+
+}
+
+void SCR_CMM_YOMEI____hook()
+{
+    int var88;
+    int var85;
+    int var87;
+    int var86;
+    var88 = 25;
+    MSG_WND_DSP();
+    
+    if ( CMM_GET_LV( var88 ) == 2 )
+    {
+        MSG( SCR_MSG_YOMEI_lv3 );
+    }
+    else if ( CMM_GET_LV( var88 ) == 4 )
+    {
+        MSG( SCR_MSG_YOMEI_lv3 );
+    }
+    else if ( CMM_GET_LV( var88 ) == 7 )
+    {
+        MSG( SCR_MSG_YOMEI_lv3 );
+    }
+    else if ( CMM_GET_LV( var88 ) == 9 )
+    {
+        MSG( SCR_MSG_YOMEI_lv10 );
+    }
+    else 
+    {
+        MSG( SCR_MSG_YOMEI_01 );
+    }
+
+    EVT_FUNCTION_0014( var88 );
+    
+    if ( ( CMM_GET_LV( var88 ) != 10 ) && ( EVT_FUNCTION_001A( var88 ) != 0 ) )
+    {
+        MSG( MSG_DOUZOKUSEI );
+    }
+
+    if(CMM_CHK_LVUP(var88))
+    {
+        MSG(RankupReady);
+    }
+
+    sentakuloop16:
+    MSG_WND_CLS();
+    MSG_WND_DSP();
+    MSG( SCR_MSG_YOMEI_02 );
+    SEL_DEFKEY( 14, 2 );
+    var85 = SEL( YOMEI_COMMU_SEL );
+    
+    if ( var85 == 0 )
+    {
+        EVT_FUNCTION_000C( 0, var88 );
+        
+        if ( CMM_GET_LV( var88 ) == 2 )
+        {
+            MSG( SCR_MSG_YOMEI_lv3_YES );
+        }
+        else if ( CMM_GET_LV( var88 ) == 4 )
+        {
+            MSG( SCR_MSG_YOMEI_lv3_YES );
+        }
+        else if ( CMM_GET_LV( var88 ) == 7 )
+        {
+            MSG( SCR_MSG_YOMEI_lv3_YES );
+        }
+        else if ( CMM_GET_LV( var88 ) == 9 )
+        {
+            MSG( SCR_MSG_YOMEI_lv3_YES );
+        }
+        else 
+        {
+            MSG( SCR_MSG_YOMEI_01_YES );
+        }
+
+        EVT_FUNCTION_0007( var88 );
+        MSG_WND_CLS();
+        FADE( 1, 0 );
+        FUNCTION_000F();
+        EVT_FUNCTION_000D();
+        NEXT_TIME();
+        return;
+    }
+    else if ( var85 == 1 )
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        EVT_FUNCTION_0014( var88 );
+        MSG( ZOKUSEI_KAKUNIN );
+        _761:
+        
+        if ( 1 )
+        {
+            var86 = EVT_FUNCTION_001D( var88, var87 );
+            
+            if ( var86 == 0 )
+            {
+                goto _762;
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            FUNCTION_0055( 1, 2 );
+            var87 = ( var87 + 1 );
+            goto _761;
+        }
+
+        _762:
+        var87 = 0;
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var88 ) == 10 )
+        {
+            MSG( ZOKUSEI_NOMORE );
+        }
+        else 
+        {
+            MSG( ZOKUSEI_NOTYET );
+        }
+
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        goto sentakuloop16;
+        return;
+    }
+    else 
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        MSG( SCR_MSG_YOMEI_01_NO );
+        MSG_WND_CLS();
+        return;
+    }
+
+}
+

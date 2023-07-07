@@ -71,7 +71,6 @@ namespace p3ppc.visibleRankupReady
 
         public Mod(ModContext context)
         {
-            Debugger.Launch();
             _modLoader = context.ModLoader;
             _hooks = context.Hooks;
             _logger = context.Logger;

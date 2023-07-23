@@ -1,0 +1,137 @@
+import("cmm.msg");
+
+void SCR_000_hook()
+{
+    int var3;
+    int var2;
+    int var0;
+    int var4;
+    int var5;
+    var3 = 0;
+    
+    if ( GET_DAY( 8, 17 ) == 1 )
+    {
+        var2 = 0;
+        var3 = 2;
+    }
+    else if ( GET_DAY( 8, 18 ) == 1 )
+    {
+        var2 = 5;
+        var3 = 20;
+    }
+    else if ( GET_DAY( 8, 19 ) == 1 )
+    {
+        var2 = 10;
+        var3 = EVT_FUNCTION_002A( 1 );
+    }
+    else if ( GET_DAY( 8, 21 ) == 1 )
+    {
+        var2 = 15;
+        var3 = 9;
+    }
+    else if ( GET_DAY( 8, 22 ) == 1 )
+    {
+        var2 = 20;
+        var3 = EVT_FUNCTION_002A( 0 );
+    }
+    else if ( GET_DAY( 8, 23 ) == 1 )
+    {
+        var2 = 25;
+        var3 = 10;
+    }
+
+    CALL_BG_IMG( 7, 1, 0, 1 );
+    BGM( 85 );
+    FUNCTION_000D( 10 );
+    WAIT( 10 );
+    FUNCTION_0024( 70 );
+    FUNCTION_0024( 25 );
+    MSG_WND_DSP();
+    MSG( ( 7 + var2 ) );
+    
+    EVT_FUNCTION_0014( var3 );
+
+    if ( EVT_FUNCTION_001A( var3 ) != 0 )
+    {
+        MSG( MSG_DOUZOKUSEI );
+    }
+
+    if(CMM_CHK_LVUP(var3))
+    {
+        MSG(RankupReady);
+    }
+
+    EVT_FUNCTION_0017( var3 );
+    sentakuloop:
+    MSG( COMU_SYS_03 );
+    var0 = SEL( COMU_SYS_04 );
+    
+    if ( var0 == 0 )
+    {
+        MSG( ( 8 + var2 ) );
+        BIT_ON( 1536 );
+        MSG_WND_CLS();
+        FUNCTION_0024( 319 );
+        WAIT( 10 );
+        FUNCTION_0024( 235 );
+        MSG_WND_DSP();
+        MSG( ( 9 + var2 ) );
+        MSG_WND_CLS();
+    }
+    else if ( var0 == 1 )
+    {
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        EVT_FUNCTION_0014( var3 );
+        MSG( ZOKUSEI_KAKUNIN );
+        _10:
+        
+        if ( 1 )
+        {
+            var5 = EVT_FUNCTION_001D( var3, var4 );
+            
+            if ( var5 == 0 )
+            {
+                goto _11;
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            FUNCTION_0055( 1, 2 );
+            var4 = ( var4 + 1 );
+            goto _10;
+        }
+
+        _11:
+        var4 = 0;
+        MSG_WND_DSP();
+        
+        if ( CMM_GET_LV( var3 ) == 10 )
+        {
+            MSG( ZOKUSEI_NOMORE );
+        }
+        else 
+        {
+            MSG( ZOKUSEI_NOTYET );
+        }
+
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        goto sentakuloop;
+    }
+    else 
+    {
+        MSG( ( 10 + var2 ) );
+        MSG( ( 11 + var2 ) );
+        MSG_WND_CLS();
+        FUNCTION_0024( 319 );
+        WAIT( 10 );
+        FUNCTION_0024( 235 );
+    }
+
+    EVT_FUNCTION_0017( 0 );
+    WAIT( 10 );
+    FADE( 3, 0 );
+    EVT_FUNCTION_0001();
+    BGM_STOP( 0 );
+}

@@ -1,0 +1,427 @@
+import("cmm.msg");
+
+void comu_reading_room_hook()
+{
+    int var104;
+    int var101;
+    int var103;
+    int var102;
+    MSG_WND_DSP();
+    MSG( SCR_MSG_TOSHOSITU_HAIRU );
+    
+    if ( BIT_CHK( 2803 ) )
+    {
+        
+        if ( ( BIT_CHK( 4103 ) && ( CMM_GET_LV( 10 ) == 10 ) ) && !BIT_CHK( 2842 ) )
+        {
+            MSG( MARCH_TOSHO_MAX );
+            SEL_DEFKEY( 14, 1 );
+            
+            if ( SEL( MARCH_NETCOMMU_SEL ) == 0 )
+            {
+                MSG_WND_CLS();
+                FUNCTION_001E( 3, 1 );
+                FADE( 3, 0 );
+                CALL_EVENT( 680, 450 );
+                BIT_ON( 2842 );
+                CALL_FIELD( 6, 7, 3, 0 );
+                return;
+            }
+            else 
+            {
+                MSG_WND_CLS();
+                return;
+            }
+
+        }
+        else if ( ( BIT_CHK( 4103 ) && ( CMM_GET_LV( 10 ) == 10 ) ) && BIT_CHK( 2842 ) )
+        {
+            MSG( MARCH_TOSHO_MAX_AFTER );
+            MSG_WND_CLS();
+            return;
+        }
+        else 
+        {
+            MSG( SCR_MSG_ENDING_NG );
+            MSG_WND_CLS();
+            return;
+        }
+
+    }
+
+    
+    if ( ( ( BIT_CHK( 4103 ) && ( CMM_GET_LV( 10 ) >= 1 ) ) && ( CMM_GET_LV( 10 ) < 10 ) ) && BIT_CHK( 1993 ) )
+    {
+        var104 = 10;
+        MSG( TOSHO_COMMU_01 );
+
+        EVT_FUNCTION_0014( var104 );
+        
+        if ( ( CMM_GET_LV( var104 ) != 10 ) && ( EVT_FUNCTION_001A( var104 ) != 0 ) )
+        {
+            MSG( MSG_DOUZOKUSEI );
+        }
+
+        if(CMM_CHK_LVUP(var104))
+        {
+            MSG(RankupReady);
+        }
+
+        sentakuloop_tosho:
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        MSG( TOSHO_COMMU_02 );
+        SEL_DEFKEY( 14, 2 );
+        var101 = SEL( TOSHO_COMMU_SEL );
+        
+        if ( var101 == 0 )
+        {
+            EVT_FUNCTION_000C( 0, var104 );
+            
+            if ( CMM_CHK_LVUP( var104 ) == 1 )
+            {
+                MSG( TOSHO_COMMU_SURU );
+                EVT_FUNCTION_0007( var104 );
+                BIT_OFF( 2081 );
+            }
+            else 
+            {
+                MSG( TOSHO_COMMU_SURU );
+            }
+
+            MSG_WND_CLS();
+            FADE( 1, 0 );
+            FUNCTION_000F();
+            EVT_FUNCTION_000D();
+            NEXT_TIME();
+            return;
+        }
+        else if ( var101 == 1 )
+        {
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            EVT_FUNCTION_0014( var104 );
+            MSG( ZOKUSEI_KAKUNIN );
+            _735:
+            
+            if ( 1 )
+            {
+                var102 = EVT_FUNCTION_001D( var104, var103 );
+                
+                if ( var102 == 0 )
+                {
+                    goto _736;
+                }
+
+                MSG_WND_CLS();
+                MSG_WND_DSP();
+                FUNCTION_0055( 18, 2 );
+                var103 = ( var103 + 1 );
+                goto _735;
+            }
+
+            _736:
+            var103 = 0;
+            MSG_WND_DSP();
+            
+            if ( CMM_GET_LV( var104 ) == 10 )
+            {
+                MSG( ZOKUSEI_NOMORE );
+            }
+            else 
+            {
+                MSG( ZOKUSEI_NOTYET );
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            goto sentakuloop_tosho;
+            return;
+        }
+        else 
+        {
+            MSG_WND_CLS();
+            return;
+        }
+
+    }
+    else if ( FLD_FUNCTION_003F( 1, 0 ) == 6 )
+    {
+        MSG( PARAM_MAX_NG );
+    }
+
+    MSG( SCR_MSG_TOSHOSITU_HAIRU0 );
+    SEL_DEFKEY( 14, 1 );
+    
+    if ( SEL( TOSHO_JISHUU_SEL ) == 0 )
+    {
+        MSG_WND_CLS();
+        FUNCTION_001E( 3, 1 );
+        FADE( 3, 0 );
+        CALL_EVENT( 819, 1 );
+        NEXT_TIME();
+        return;
+    }
+
+    MSG_WND_CLS();
+}
+
+void comu_health_room_hook()
+{
+    int var108;
+    int var105;
+    int var107;
+    int var106;
+    int var109;
+    MSG_WND_DSP();
+    MSG( SCR_MSG_HOKEN );
+    
+    if ( BIT_CHK( 2803 ) )
+    {
+        
+        if ( ( BIT_CHK( 4103 ) && ( CMM_GET_LV( 9 ) == 10 ) ) && !BIT_CHK( 2842 ) )
+        {
+            MSG( MARCH_HOKEN_MAX );
+            SEL_DEFKEY( 14, 1 );
+            
+            if ( SEL( MARCH_NETCOMMU_SEL ) == 0 )
+            {
+                MSG_WND_CLS();
+                FUNCTION_001E( 3, 1 );
+                FADE( 3, 0 );
+                CALL_EVENT( 670, 450 );
+                BIT_ON( 2842 );
+                CALL_FIELD( 6, 7, 2, 0 );
+                return;
+            }
+            else 
+            {
+                MSG_WND_CLS();
+                return;
+            }
+
+        }
+        else if ( ( BIT_CHK( 4103 ) && ( CMM_GET_LV( 9 ) == 10 ) ) && BIT_CHK( 2842 ) )
+        {
+            MSG( MARCH_HOKEN_MAX_AFTER );
+            MSG_WND_CLS();
+            return;
+        }
+        else 
+        {
+            MSG( SCR_MSG_ENDING_NG );
+            MSG_WND_CLS();
+            return;
+        }
+
+    }
+
+    
+    if ( CHECK_TIREDNESS( PartyMember.Protagonist ) >= 3 )
+    {
+        
+        if ( !BIT_CHK( 3067 ) )
+        {
+            MSG( HOKEN_HIROU );
+            SEL_DEFKEY( 14, 1 );
+            
+            if ( SEL( INTO_SEL ) == 1 )
+            {
+                MSG_WND_CLS();
+                return;
+            }
+            else 
+            {
+                MSG_WND_CLS();
+                WAIT( 10 );
+                FUNCTION_001E( 3, 1 );
+                FADE( 3, 0 );
+                CALL_EVENT( 862, 2 );
+                CALL_FIELD( 6, 7, 2, 0 );
+                return;
+            }
+
+        }
+
+    }
+
+    
+    if ( ( ( BIT_CHK( 4103 ) && ( CMM_GET_LV( 9 ) >= 1 ) ) && ( CMM_GET_LV( 9 ) < 10 ) ) && BIT_CHK( 1992 ) )
+    {
+        var108 = 9;
+        MSG( HOKEN_COMMU_01 );
+        
+        EVT_FUNCTION_0014( var108 );
+
+        if ( ( CMM_GET_LV( var108 ) != 10 ) && ( EVT_FUNCTION_001A( var108 ) != 0 ) )
+        {
+            MSG( MSG_DOUZOKUSEI );
+        }
+
+        if(CMM_CHK_LVUP(var108))
+        {
+            MSG(RankupReady);
+        }
+
+        sentakuloop_hoken:
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        MSG( HOKEN_COMMU_02 );
+        SEL_DEFKEY( 14, 2 );
+        var105 = SEL( HOKEN_COMMU_SEL );
+        
+        if ( var105 == 0 )
+        {
+            EVT_FUNCTION_000C( 0, var108 );
+            
+            if ( CMM_CHK_LVUP( var108 ) == 1 )
+            {
+                MSG( HOKEN_COMMU_SURU );
+                EVT_FUNCTION_0007( var108 );
+                BIT_OFF( 2081 );
+            }
+            else 
+            {
+                MSG( HOKEN_COMMU_SURU );
+            }
+
+            MSG_WND_CLS();
+            FADE( 1, 0 );
+            EVT_FUNCTION_000D();
+            NEXT_TIME();
+            return;
+        }
+        else if ( var105 == 1 )
+        {
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            EVT_FUNCTION_0014( var108 );
+            MSG( ZOKUSEI_KAKUNIN );
+            _767:
+            
+            if ( 1 )
+            {
+                var106 = EVT_FUNCTION_001D( var108, var107 );
+                
+                if ( var106 == 0 )
+                {
+                    goto _768;
+                }
+
+                MSG_WND_CLS();
+                MSG_WND_DSP();
+                FUNCTION_0055( 18, 2 );
+                var107 = ( var107 + 1 );
+                goto _767;
+            }
+
+            _768:
+            var107 = 0;
+            MSG_WND_DSP();
+            
+            if ( CMM_GET_LV( var108 ) == 10 )
+            {
+                MSG( ZOKUSEI_NOMORE );
+            }
+            else 
+            {
+                MSG( ZOKUSEI_NOTYET );
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            goto sentakuloop_hoken;
+            return;
+        }
+        else 
+        {
+            MSG_WND_CLS();
+            return;
+        }
+
+    }
+    else if ( CHECK_TIREDNESS( PartyMember.Protagonist ) >= 3 )
+    {
+        
+        if ( BIT_CHK( 3067 ) )
+        {
+            MSG( SCR_MSG_HOKEN_NG );
+            MSG_WND_CLS();
+            return;
+        }
+
+    }
+    else if ( CHK_DAYS_STARTEND( 9, 1, 1, 31 ) == 1 )
+    {
+        
+        if ( BIT_CHK( 3071 ) )
+        {
+            MSG( SCR_MSG_HOKEN_HOSHU_NG );
+            MSG_WND_CLS();
+            return;
+        }
+        else 
+        {
+            MSG( SCR_MSG_HOKEN_HOSHU );
+            SEL_DEFKEY( 14, 2 );
+            var105 = SEL( HOKEN_HOSHU_SEL );
+            
+            if ( var105 == 0 )
+            {
+                MSG_WND_CLS();
+                WAIT( 10 );
+                FUNCTION_001E( 3, 1 );
+                FADE( 3, 0 );
+                var109 = GET_COUNT( 118 );
+                CALL_EVENT( 862, 3 );
+                
+                if ( var109 <= 4 )
+                {
+                    var109 = ( var109 + 1 );
+                    SET_COUNT( 118, var109 );
+                }
+
+            }
+            else if ( var105 == 1 )
+            {
+                MSG_WND_CLS();
+                WAIT( 10 );
+                FUNCTION_001E( 3, 1 );
+                FADE( 3, 0 );
+                CALL_EVENT( 862, 2 );
+            }
+            else 
+            {
+                MSG_WND_CLS();
+                return;
+            }
+
+            CALL_FIELD( 6, 7, 2, 0 );
+            return;
+        }
+
+    }
+    else 
+    {
+        SEL_DEFKEY( 14, 1 );
+        
+        if ( SEL( INTO_SEL ) == 1 )
+        {
+            MSG_WND_CLS();
+            return;
+        }
+        else 
+        {
+            MSG_WND_CLS();
+            WAIT( 10 );
+            FUNCTION_001E( 3, 1 );
+            FADE( 3, 0 );
+            CALL_EVENT( 862, 2 );
+            CALL_FIELD( 6, 7, 2, 0 );
+            return;
+        }
+
+    }
+
+}
+

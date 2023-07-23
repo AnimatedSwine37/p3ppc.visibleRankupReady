@@ -1,0 +1,197 @@
+import("cmm.msg");
+
+void comu_student_council_hook()
+{
+    int var22;
+    int var17;
+    int var21;
+    int var20;
+    
+    if ( BIT_CHK( 4104 ) )
+    {
+        var22 = 3;
+    }
+    else 
+    {
+        var22 = 3;
+    }
+
+    MSG_WND_DSP();
+    MSG( SCR_MSG_SEITOKAI_01 );
+    
+    if ( BIT_CHK( 2803 ) )
+    {
+        MSG( SCR_MSG_ENDING_NG );
+        MSG_WND_CLS();
+        return;
+    }
+
+    
+    if ( BIT_CHK( 3065 ) )
+    {
+        MSG( SCR_MSG_SIKENMAE_NG );
+        MSG_WND_CLS();
+        return;
+    }
+
+    
+    if ( ( ( FUNCTION_0032() == 1 ) || ( FUNCTION_0032() == 3 ) ) || ( FUNCTION_0032() == 5 ) )
+    {
+        
+        if ( BIT_CHK( 3063 ) )
+        {
+            MSG( SCR_MSG_TAIIN_COMMU_NG );
+            MSG_WND_CLS();
+            return;
+        }
+
+        
+        if ( BIT_CHK( 2781 ) )
+        {
+            MSG( SCR_MSG_TAIIN_COMMU_NG );
+            MSG_WND_CLS();
+            return;
+        }
+
+    }
+
+    
+    if ( ( BIT_CHK( 4104 ) && BIT_CHK( 1986 ) ) || ( BIT_CHK( 4103 ) && BIT_CHK( 1986 ) ) )
+    {
+        
+        if ( EVT_FUNCTION_0005( var22 ) == 1 )
+        {
+            EVT_FUNCTION_0014( var22 );
+            
+            if ( ( CMM_GET_LV( var22 ) != 10 ) && ( EVT_FUNCTION_001A( var22 ) != 0 ) )
+            {
+                MSG( MSG_DOUZOKUSEI );
+            }
+
+            if(CMM_CHK_LVUP(var22))
+            {
+                MSG(RankupReady);
+            }
+
+            sentakuloop_s:
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            MSG( SCR_MSG_SEITOKAI_02 );
+            SEL_DEFKEY( 14, 2 );
+            var17 = SEL( SEITOKAI_COMMU_SEL );
+            
+            if ( var17 == 0 )
+            {
+                EVT_FUNCTION_000C( 0, var22 );
+                
+                if ( CMM_CHK_LVUP( var22 ) == 1 )
+                {
+                    MSG( SCR_MSG_SEITOKAI_SURU );
+                    EVT_FUNCTION_0007( var22 );
+                }
+                else 
+                {
+                    MSG( SCR_MSG_SEITOKAI_SURU );
+                }
+
+                MSG_WND_CLS();
+                FADE( 3, 0 );
+                EVT_FUNCTION_000D();
+                NEXT_TIME();
+                return;
+            }
+            else if ( var17 == 1 )
+            {
+                MSG_WND_CLS();
+                MSG_WND_DSP();
+                EVT_FUNCTION_0014( var22 );
+                MSG( ZOKUSEI_KAKUNIN );
+                _328:
+                
+                if ( 1 )
+                {
+                    var20 = EVT_FUNCTION_001D( var22, var21 );
+                    
+                    if ( var20 == 0 )
+                    {
+                        goto _329;
+                    }
+
+                    MSG_WND_CLS();
+                    MSG_WND_DSP();
+                    FUNCTION_0055( 18, 2 );
+                    var21 = ( var21 + 1 );
+                    goto _328;
+                }
+
+                _329:
+                var21 = 0;
+                MSG_WND_DSP();
+                
+                if ( CMM_GET_LV( var22 ) == 10 )
+                {
+                    MSG( ZOKUSEI_NOMORE );
+                }
+                else 
+                {
+                    MSG( ZOKUSEI_NOTYET );
+                }
+
+                MSG_WND_CLS();
+                MSG_WND_DSP();
+                goto sentakuloop_s;
+                return;
+            }
+            else 
+            {
+                MSG_WND_CLS();
+                return;
+            }
+
+        }
+        else if ( BIT_CHK( 2724 ) )
+        {
+            MSG( SEITOKAI_KYOKA_ARI );
+            SEL_DEFKEY( 14, 1 );
+            
+            if ( SEL( YESNO_SEL ) == 0 )
+            {
+                MSG_WND_CLS();
+                FUNCTION_001E( 3, 1 );
+                FADE( 3, 0 );
+                EVT_FUNCTION_000C( 0, var22 );
+                EVT_FUNCTION_000D();
+                EVT_FUNCTION_0004( var22 );
+                BIT_ON( 2603 );
+                NEXT_TIME();
+                return;
+            }
+            else 
+            {
+                MSG_WND_CLS();
+                return;
+            }
+
+        }
+        else if ( BIT_CHK( 2723 ) )
+        {
+            MSG( SEITOKAI_KYOKA_NASI );
+            MSG_WND_CLS();
+            return;
+        }
+        else 
+        {
+            MSG( STUDENT_COUNCIL );
+            MSG_WND_CLS();
+            return;
+        }
+
+    }
+    else 
+    {
+        MSG( STUDENT_COUNCIL_03 );
+        MSG_WND_CLS();
+        return;
+    }
+
+}

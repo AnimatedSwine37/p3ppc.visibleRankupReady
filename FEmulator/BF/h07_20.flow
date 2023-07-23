@@ -1,0 +1,248 @@
+import("cmm.msg");
+
+void comu_check_desk_hook()
+{
+    int var26;
+    int var23;
+    int var25;
+    int var24;
+    
+    if ( BIT_CHK( 4104 ) )
+    {
+        var26 = 14;
+    }
+    else 
+    {
+        var26 = 0;
+    }
+
+    
+    if ( CHK_DAYS_STARTEND( 2, 1, 3, 31 ) )
+    {
+        MSG_WND_DSP();
+        MSG( NOT_STUDY );
+        MSG_WND_CLS();
+        return;
+    }
+
+    
+    if ( CHK_DAYS_STARTEND( 4, 7, 4, 18 ) )
+    {
+        MSG_WND_DSP();
+        MSG( NOT_STUDY );
+        MSG_WND_CLS();
+    }
+    else if ( FUNCTION_0033() == 0 )
+    {
+        MSG_WND_DSP();
+        MSG( BED_GOTO_SCHOOL );
+    }
+    else if ( FUNCTION_0033() == 3 )
+    {
+        
+        if ( !BIT_CHK( 2804 ) )
+        {
+            FUNCTION_002D( 82 );
+            BIT_ON( 2804 );
+            MSG_WND_DSP();
+        }
+
+        MSG_WND_DSP();
+        
+        if ( FLD_FUNCTION_003F( 1, 0 ) == 6 )
+        {
+            MSG( GAKURYOKU_MAX_NG );
+        }
+
+        
+        if ( ( ( CHK_DAYS_STARTEND( 4, 19, 4, 28 ) || ( CMM_GET_LV( 14 ) == 10 ) ) || BIT_CHK( 2803 ) ) || BIT_CHK( 4103 ) )
+        {
+            
+            if ( ( GET_DAY( 8, 8 ) || GET_DAY( 8, 28 ) ) || GET_DAY( 12, 30 ) )
+            {
+                MSG( CHECK_DESK_YOTEI );
+                SEL_DEFKEY( 14, 1 );
+                var23 = SEL( DESK_STUDY_SEL2 );
+            }
+            else if ( GET_DAY( 12, 31 ) || GET_DAY( 1, 31 ) )
+            {
+                MSG( CHECK_DESK_YOTEI2 );
+                SEL_DEFKEY( 14, 1 );
+                var23 = SEL( DESK_STUDY_SEL2 );
+            }
+            else 
+            {
+                MSG( CHECK_DESK );
+                SEL_DEFKEY( 14, 1 );
+                var23 = SEL( DESK_STUDY_SEL );
+            }
+
+            
+            if ( var23 == 0 )
+            {
+                call_study_seq();
+            }
+            else 
+            {
+                return;
+            }
+
+        }
+        else if ( EVT_FUNCTION_0005( var26 ) == 0 )
+        {
+            
+            if ( !BIT_CHK( 2639 ) )
+            {
+                MSG( NET_COMMU_FIRST_2 );
+                BIT_ON( 2639 );
+            }
+
+            
+            if ( ( GET_DAY( 8, 8 ) || GET_DAY( 8, 28 ) ) || GET_DAY( 12, 30 ) )
+            {
+                MSG( CHECK_DESK_YOTEI );
+                SEL_DEFKEY( 14, 2 );
+                var23 = SEL( DESK_SEL2 );
+            }
+            else if ( GET_DAY( 12, 31 ) || GET_DAY( 1, 31 ) )
+            {
+                MSG( CHECK_DESK_YOTEI2 );
+                SEL_DEFKEY( 14, 2 );
+                var23 = SEL( DESK_SEL2 );
+            }
+            else 
+            {
+                MSG( CHECK_DESK );
+                SEL_DEFKEY( 14, 2 );
+                var23 = SEL( DESK_SEL );
+            }
+
+            
+            if ( var23 == 0 )
+            {
+                call_study_seq();
+            }
+            else if ( var23 == 1 )
+            {
+                net_commu_event();
+                return;
+            }
+            else 
+            {
+                return;
+            }
+
+        }
+        else if ( CMM_CHK_LVUP( var26 ) == 1 )
+        {
+            MSG( NET_COMMU_SASOI );
+        }
+        else 
+        {
+            MSG( NET_COMMU_SASOI_NASI );
+        }
+
+        EVT_FUNCTION_0014( var26 );
+        
+        if ( ( CMM_GET_LV( var26 ) != 10 ) && ( EVT_FUNCTION_001A( var26 ) != 0 ) )
+        {
+            MSG( MSG_DOUZOKUSEI );
+        }
+
+        if(CMM_CHK_LVUP(var26))
+        {
+            MSG(RankupReady);
+        }
+
+        sentakuloop:
+        MSG_WND_CLS();
+        MSG_WND_DSP();
+        
+        if ( ( GET_DAY( 8, 8 ) || GET_DAY( 8, 28 ) ) || GET_DAY( 12, 30 ) )
+        {
+            MSG( CHECK_DESK_YOTEI );
+            SEL_DEFKEY( 14, 3 );
+            var23 = SEL( DESK_COMMU_SEL2 );
+        }
+        else if ( GET_DAY( 12, 31 ) || GET_DAY( 1, 31 ) )
+        {
+            MSG( CHECK_DESK_YOTEI2 );
+            SEL_DEFKEY( 14, 3 );
+            var23 = SEL( DESK_COMMU_SEL2 );
+        }
+        else 
+        {
+            MSG( CHECK_DESK );
+            SEL_DEFKEY( 14, 3 );
+            var23 = SEL( DESK_COMMU_SEL );
+        }
+
+        
+        if ( var23 == 0 )
+        {
+            call_study_seq();
+            return;
+        }
+        else if ( var23 == 1 )
+        {
+            net_commu_event();
+            return;
+        }
+        else if ( var23 == 2 )
+        {
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            EVT_FUNCTION_0014( var26 );
+            MSG( ZOKUSEI_KAKUNIN );
+            _459:
+            
+            if ( 1 )
+            {
+                var24 = EVT_FUNCTION_001D( var26, var25 );
+                
+                if ( var24 == 0 )
+                {
+                    goto _460;
+                }
+
+                MSG_WND_CLS();
+                MSG_WND_DSP();
+                FUNCTION_0055( 91, 2 );
+                var25 = ( var25 + 1 );
+                goto _459;
+            }
+
+            _460:
+            var25 = 0;
+            MSG_WND_DSP();
+            
+            if ( CMM_GET_LV( var26 ) == 10 )
+            {
+                MSG( ZOKUSEI_NOMORE );
+            }
+            else 
+            {
+                MSG( ZOKUSEI_NOTYET );
+            }
+
+            MSG_WND_CLS();
+            MSG_WND_DSP();
+            goto sentakuloop;
+            return;
+        }
+        else 
+        {
+            MSG_WND_CLS();
+            return;
+        }
+
+    }
+    else if ( FUNCTION_0033() == 5 )
+    {
+        MSG_WND_DSP();
+        MSG( NOT_WORK );
+    }
+
+    MSG_WND_CLS();
+}
+

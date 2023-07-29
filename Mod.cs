@@ -65,7 +65,9 @@ namespace p3ppc.visibleRankupReady
         private IAsmHook _maxArcanaHook;
         private bool* _isFemc;
         private float* _detailsXOffset;
+        private nint _detailsXOffsetPtr;
         private float* _maxXOffset;
+        private nint _maxXOffsetPtr;
 
         private nuint _rankupSprite;
 
@@ -84,10 +86,14 @@ namespace p3ppc.visibleRankupReady
             _detailsXOffset = (float*)memory.Allocate(4).Address;
             *_detailsXOffset = -8;
             Utils.LogDebug($"Wrote details x offset to 0x{(nuint)_detailsXOffset:X}");
+            _detailsXOffsetPtr = _hooks.Utilities.WritePointer((nint)_detailsXOffset);
+            Utils.LogDebug($"Wrote details x offset pointer to 0x{_detailsXOffsetPtr:X}");
 
             _maxXOffset = (float*)memory.Allocate(4).Address;
             *_maxXOffset = 6.5f;
-            Utils.LogDebug($"Wrote max x offset to 0x{(nuint)_detailsXOffset:X}");
+            Utils.LogDebug($"Wrote max x offset to 0x{(nuint)_maxXOffset:X}");
+            _maxXOffsetPtr = _hooks.Utilities.WritePointer((nint)_maxXOffset);
+            Utils.LogDebug($"Wrote max x offset pointer to 0x{_maxXOffsetPtr:X}");
 
             var startupScannerController = _modLoader.GetController<IStartupScanner>();
             if (startupScannerController == null || !startupScannerController.TryGetTarget(out var startupScanner))
@@ -226,7 +232,8 @@ namespace p3ppc.visibleRankupReady
                     "cmp eax, 0",
                     "je noRankup",
                     // Offset xPos
-                    $"addss xmm1, [qword {(nuint)_detailsXOffset}]",
+                    $"mov rax, [qword {_detailsXOffsetPtr}]",
+                    $"addss xmm1, [rax]",
                     "label noRankup",
                     "pop rbx",
                     "pop rax"
@@ -259,7 +266,8 @@ namespace p3ppc.visibleRankupReady
                     "cmp eax, 0",
                     "je noRankup",
                     // Offset xPos
-                    $"addss xmm1, [qword {(nuint)_detailsXOffset}]",
+                    $"mov rax, [qword {_detailsXOffsetPtr}]",
+                    $"addss xmm1, [rax]",
                     "label noRankup",
                     "pop rbx",
                     "pop rax"
@@ -280,7 +288,10 @@ namespace p3ppc.visibleRankupReady
                 string[] function =
                 {
                     "use64",
-                    $"addss xmm1, [qword {(nuint)_maxXOffset}]",
+                    "push rax",
+                    $"mov rax, [qword {_maxXOffsetPtr}]",
+                    $"addss xmm1, [rax]",
+                    "pop rax",
                 };
                 _detailsMaxOffsetHook = _hooks.CreateAsmHook(function, result.Offset + Utils.BaseAddress, AsmHookBehaviour.ExecuteFirst).Activate();
             });

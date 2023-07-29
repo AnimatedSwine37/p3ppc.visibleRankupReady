@@ -210,7 +210,7 @@ void e811_001_INVITE_hook()
 
                 MSG_WND_CLS();
                 MSG_WND_DSP();
-                FUNCTION_0055( 10, 2 );
+                FUNCTION_0055( PER_KOE, 2 );
                 var4 = ( var4 + 1 );
                 goto _34;
             }
@@ -437,7 +437,7 @@ void e811_001_INVITE_hook()
 
                 MSG_WND_CLS();
                 MSG_WND_DSP();
-                FUNCTION_0055( 10, 2 );
+                FUNCTION_0055( PER_KOE, 2 );
                 var4 = ( var4 + 1 );
                 goto _78;
             }
@@ -664,7 +664,7 @@ void e811_001_INVITE_hook()
 
                 MSG_WND_CLS();
                 MSG_WND_DSP();
-                FUNCTION_0055( 10, 2 );
+                FUNCTION_0055( PER_KOE, 2 );
                 var4 = ( var4 + 1 );
                 goto _122;
             }

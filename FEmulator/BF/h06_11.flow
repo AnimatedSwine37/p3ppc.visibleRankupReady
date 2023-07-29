@@ -98,7 +98,7 @@ void comu_dress_club_hook()
 
                 MSG_WND_CLS();
                 MSG_WND_DSP();
-                FUNCTION_0055( 18, 2 );
+                FUNCTION_0055( PER_KOE, 2 );
                 var27 = ( var27 + 1 );
                 goto _356;
             }
@@ -200,7 +200,7 @@ void comu_dress_club_hook()
 
                     MSG_WND_CLS();
                     MSG_WND_DSP();
-                    FUNCTION_0055( 18, 2 );
+                    FUNCTION_0055( PER_KOE, 2 );
                     var27 = ( var27 + 1 );
                     goto _371;
                 }
@@ -382,7 +382,7 @@ void comu_photograph_club_hook()
 
                 MSG_WND_CLS();
                 MSG_WND_DSP();
-                FUNCTION_0055( 18, 2 );
+                FUNCTION_0055( PER_KOE, 2 );
                 var36 = ( var36 + 1 );
                 goto _406;
             }
@@ -568,7 +568,7 @@ void comu_orchestra_hook()
 
                 MSG_WND_CLS();
                 MSG_WND_DSP();
-                FUNCTION_0055( 18, 2 );
+                FUNCTION_0055( PER_KOE, 2 );
                 var44 = ( var44 + 1 );
                 goto _438;
             }
@@ -754,7 +754,7 @@ void comu_art_club_hook()
 
                 MSG_WND_CLS();
                 MSG_WND_DSP();
-                FUNCTION_0055( 18, 2 );
+                FUNCTION_0055( PER_KOE, 2 );
                 var52 = ( var52 + 1 );
                 goto _470;
             }

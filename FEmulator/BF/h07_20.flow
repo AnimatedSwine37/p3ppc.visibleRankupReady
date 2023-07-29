@@ -207,7 +207,7 @@ void comu_check_desk_hook()
 
                 MSG_WND_CLS();
                 MSG_WND_DSP();
-                FUNCTION_0055( 91, 2 );
+                FUNCTION_0055( PER_KOE, 2 );
                 var25 = ( var25 + 1 );
                 goto _459;
             }

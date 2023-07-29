@@ -130,7 +130,7 @@ void comu_bookseller_hook()
 
                 MSG_WND_CLS();
                 MSG_WND_DSP();
-                FUNCTION_0055( 61, 2 );
+                FUNCTION_0055( SCR_MSG_PER_KOE, 2 );
                 var18 = ( var18 + 1 );
                 goto _229;
             }

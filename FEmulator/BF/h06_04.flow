@@ -119,7 +119,7 @@ void comu_student_council_hook()
 
                     MSG_WND_CLS();
                     MSG_WND_DSP();
-                    FUNCTION_0055( 18, 2 );
+                    FUNCTION_0055( PER_KOE, 2 );
                     var21 = ( var21 + 1 );
                     goto _328;
                 }

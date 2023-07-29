@@ -140,7 +140,7 @@ void comu_track_and_field_hook()
 
                 MSG_WND_CLS();
                 MSG_WND_DSP();
-                FUNCTION_0055( 18, 2 );
+                FUNCTION_0055( PER_KOE, 2 );
                 var61 = ( var61 + 1 );
                 goto _522;
             }
@@ -330,7 +330,7 @@ void comu_tennis_club_hook()
 
                 MSG_WND_CLS();
                 MSG_WND_DSP();
-                FUNCTION_0055( 18, 2 );
+                FUNCTION_0055( PER_KOE, 2 );
                 var70 = ( var70 + 1 );
                 goto _554;
             }
@@ -564,7 +564,7 @@ void comu_kendo_club_hook()
 
                 MSG_WND_CLS();
                 MSG_WND_DSP();
-                FUNCTION_0055( 18, 2 );
+                FUNCTION_0055( PER_KOE, 2 );
                 var79 = ( var79 + 1 );
                 goto _596;
             }
@@ -755,7 +755,7 @@ void comu_volley_club_hook()
 
                 MSG_WND_CLS();
                 MSG_WND_DSP();
-                FUNCTION_0055( 18, 2 );
+                FUNCTION_0055( PER_KOE, 2 );
                 var88 = ( var88 + 1 );
                 goto _628;
             }
@@ -989,7 +989,7 @@ void comu_swim_club_hook()
 
                 MSG_WND_CLS();
                 MSG_WND_DSP();
-                FUNCTION_0055( 18, 2 );
+                FUNCTION_0055( PER_KOE, 2 );
                 var97 = ( var97 + 1 );
                 goto _670;
             }

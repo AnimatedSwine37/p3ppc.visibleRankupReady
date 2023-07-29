@@ -115,7 +115,7 @@ void comu_reading_room_hook()
 
                 MSG_WND_CLS();
                 MSG_WND_DSP();
-                FUNCTION_0055( 18, 2 );
+                FUNCTION_0055( PER_KOE, 2 );
                 var103 = ( var103 + 1 );
                 goto _735;
             }
@@ -310,7 +310,7 @@ void comu_health_room_hook()
 
                 MSG_WND_CLS();
                 MSG_WND_DSP();
-                FUNCTION_0055( 18, 2 );
+                FUNCTION_0055( PER_KOE, 2 );
                 var107 = ( var107 + 1 );
                 goto _767;
             }

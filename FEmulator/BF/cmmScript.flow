@@ -137,7 +137,7 @@ void SCR_CMM_CLASSMAT_CMMOK_hook()
 
             MSG_WND_CLS();
             MSG_WND_DSP();
-            FUNCTION_0055( 1, 2 );
+            FUNCTION_0055( PER_KOE, 2 );
             var3 = ( var3 + 1 );
             goto _23;
         }
@@ -350,7 +350,7 @@ void SCR_CMM_K_YUKARI_hook()
 
             MSG_WND_CLS();
             MSG_WND_DSP();
-            FUNCTION_0055( 1, 2 );
+            FUNCTION_0055( PER_KOE, 2 );
             var11 = ( var11 + 1 );
             goto _81;
         }
@@ -569,7 +569,7 @@ void SCR_CMM_K_FUUKA__hook()
 
             MSG_WND_CLS();
             MSG_WND_DSP();
-            FUNCTION_0055( 1, 2 );
+            FUNCTION_0055( PER_KOE, 2 );
             var16 = ( var16 + 1 );
             goto _157;
         }
@@ -871,7 +871,7 @@ void SCR_CMM_K_MITURU_hook()
 
             MSG_WND_CLS();
             MSG_WND_DSP();
-            FUNCTION_0055( 1, 2 );
+            FUNCTION_0055( PER_KOE, 2 );
             var21 = ( var21 + 1 );
             goto _227;
         }
@@ -998,7 +998,7 @@ void SCR_CMM_K_AIGISU_hook()
 
             MSG_WND_CLS();
             MSG_WND_DSP();
-            FUNCTION_0055( 1, 2 );
+            FUNCTION_0055( PER_KOE, 2 );
             var27 = ( var27 + 1 );
             goto _287;
         }
@@ -1230,7 +1230,7 @@ void SCR_CMM_K_TAIKU__hook()
 
             MSG_WND_CLS();
             MSG_WND_DSP();
-            FUNCTION_0055( 1, 2 );
+            FUNCTION_0055( PER_KOE, 2 );
             var32 = ( var32 + 1 );
             goto _335;
         }
@@ -1440,7 +1440,7 @@ void SCR_CMM_K_SEITOK_hook()
 
             MSG_WND_CLS();
             MSG_WND_DSP();
-            FUNCTION_0055( 1, 2 );
+            FUNCTION_0055( PER_KOE, 2 );
             var36 = ( var36 + 1 );
             goto _377;
         }
@@ -1623,7 +1623,7 @@ void SCR_CMM_UNDOUBU__hook()
 
             MSG_WND_CLS();
             MSG_WND_DSP();
-            FUNCTION_0055( 1, 2 );
+            FUNCTION_0055( PER_KOE, 2 );
             var42 = ( var42 + 1 );
             goto _441;
         }
@@ -1772,7 +1772,7 @@ void SCR_CMM_BUNKABU__hook()
 
             MSG_WND_CLS();
             MSG_WND_DSP();
-            FUNCTION_0055( 1, 2 );
+            FUNCTION_0055( PER_KOE, 2 );
             var47 = ( var47 + 1 );
             goto _474;
         }
@@ -1926,7 +1926,7 @@ void SCR_CMM_KODOMO___hook()
 
             MSG_WND_CLS();
             MSG_WND_DSP();
-            FUNCTION_0055( 1, 2 );
+            FUNCTION_0055( PER_KOE, 2 );
             var52 = ( var52 + 1 );
             goto _505;
         }
@@ -2072,7 +2072,7 @@ void SCR_CMM_DOUKOUKA_hook()
 
             MSG_WND_CLS();
             MSG_WND_DSP();
-            FUNCTION_0055( 1, 2 );
+            FUNCTION_0055( PER_KOE, 2 );
             var60 = ( var60 + 1 );
             goto _555;
         }
@@ -2446,7 +2446,7 @@ void SCR_CMM_JAPANET__hook()
 
                 MSG_WND_CLS();
                 MSG_WND_DSP();
-                FUNCTION_0055( 1, 2 );
+                FUNCTION_0055( PER_KOE, 2 );
                 var64 = ( var64 + 1 );
                 goto _612;
             }
@@ -2672,7 +2672,7 @@ void SCR_CMM_HAKAISOU_hook()
 
             MSG_WND_CLS();
             MSG_WND_DSP();
-            FUNCTION_0055( 1, 2 );
+            FUNCTION_0055( PER_KOE, 2 );
             var68 = ( var68 + 1 );
             goto _652;
         }
@@ -2822,7 +2822,7 @@ void SCR_CMM_TAKOUACE_hook()
 
             MSG_WND_CLS();
             MSG_WND_DSP();
-            FUNCTION_0055( 1, 2 );
+            FUNCTION_0055( PER_KOE, 2 );
             var72 = ( var72 + 1 );
             goto _678;
         }
@@ -2943,7 +2943,7 @@ void SCR_CMM_SHUMATU__hook()
 
             MSG_WND_CLS();
             MSG_WND_DSP();
-            FUNCTION_0055( 1, 2 );
+            FUNCTION_0055( PER_KOE, 2 );
             var77 = ( var77 + 1 );
             goto _703;
         }
@@ -3078,7 +3078,7 @@ void SCR_CMM_YOMEI____hook()
 
             MSG_WND_CLS();
             MSG_WND_DSP();
-            FUNCTION_0055( 1, 2 );
+            FUNCTION_0055( PER_KOE, 2 );
             var87 = ( var87 + 1 );
             goto _761;
         }

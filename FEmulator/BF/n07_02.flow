@@ -92,7 +92,7 @@ void RYOU_FUUKA_hook()
 
                         MSG_WND_CLS();
                         MSG_WND_DSP();
-                        FUNCTION_0055( 2059, 2 );
+                        FUNCTION_0055( PER_KOE, 2 );
                         var17 = ( var17 + 1 );
                         goto _2231;
                     }
@@ -275,7 +275,7 @@ void RYOU_YUKAR_hook()
 
                         MSG_WND_CLS();
                         MSG_WND_DSP();
-                        FUNCTION_0055( 2059, 2 );
+                        FUNCTION_0055( PER_KOE, 2 );
                         var21 = ( var21 + 1 );
                         goto _2274;
                     }
@@ -502,7 +502,7 @@ void RYOU_KOROM_hook()
 
                     MSG_WND_CLS();
                     MSG_WND_DSP();
-                    FUNCTION_0055( 2059, 2 );
+                    FUNCTION_0055( PER_KOE, 2 );
                     var25 = ( var25 + 1 );
                     goto _2328;
                 }
@@ -650,7 +650,7 @@ void RYOU_SANAD_hook()
 
                     MSG_WND_CLS();
                     MSG_WND_DSP();
-                    FUNCTION_0055( 2059, 2 );
+                    FUNCTION_0055( PER_KOE, 2 );
                     var29 = ( var29 + 1 );
                     goto _2355;
                 }
@@ -815,7 +815,7 @@ void RYOU_JUNPE_hook()
 
                     MSG_WND_CLS();
                     MSG_WND_DSP();
-                    FUNCTION_0055( 2059, 2 );
+                    FUNCTION_0055( PER_KOE, 2 );
                     var33 = ( var33 + 1 );
                     goto _2383;
                 }
@@ -974,7 +974,7 @@ void RYOU_AMADA_hook()
 
                     MSG_WND_CLS();
                     MSG_WND_DSP();
-                    FUNCTION_0055( 2059, 2 );
+                    FUNCTION_0055( PER_KOE, 2 );
                     var37 = ( var37 + 1 );
                     goto _2410;
                 }
@@ -1118,7 +1118,7 @@ void RYOU_ARAGA_hook()
 
                     MSG_WND_CLS();
                     MSG_WND_DSP();
-                    FUNCTION_0055( 2059, 2 );
+                    FUNCTION_0055( PER_KOE, 2 );
                     var41 = ( var41 + 1 );
                     goto _2435;
                 }

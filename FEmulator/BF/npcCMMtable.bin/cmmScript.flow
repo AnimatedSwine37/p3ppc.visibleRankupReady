@@ -1,4 +1,4 @@
-import("cmm.msg");
+import("../cmm.msg");
 
 void SCR_CMM_CLASSMAT_CMMOK_hook()
 {

@@ -2,7 +2,7 @@
   "ModId": "p3ppc.visibleRankupReady",
   "ModName": "Visible Rankup Ready",
   "ModAuthor": "AnimatedSwine37",
-  "ModVersion": "1.0.2",
+  "ModVersion": "1.0.3",
   "ModDescription": "Adds indicators that Social Links are ready to rank up in the Social Link menu and when talking to them.",
   "ModDll": "p3ppc.visibleRankupReady.dll",
   "ModIcon": "Preview.png",

@@ -26,10 +26,8 @@
 ## Fixed
 
 {{#each fixes}}
-- {{#if commit.breaking}}**Breaking change:** {{/if}}{{commit.subject}}{{#each fixes}} {{
-#if
-href
-}}[`#{{id}}`]({{href}}){{/if}}{{/each}}
+- {{#if commit.breaking}}**Breaking change:** {{/if}}{{commit.subject}}{{#each fixes}} {{#if
+href}}[`#{{id}}`]({{href}}){{/if}}{{/each}}
 {{/each}}
 {{/if}}
 

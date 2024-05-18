@@ -81,6 +81,7 @@ void comu_check_desk_hook()
             if ( var23 == 0 )
             {
                 call_study_seq();
+                return;
             }
             else 
             {
@@ -121,6 +122,7 @@ void comu_check_desk_hook()
             if ( var23 == 0 )
             {
                 call_study_seq();
+                return;
             }
             else if ( var23 == 1 )
             {

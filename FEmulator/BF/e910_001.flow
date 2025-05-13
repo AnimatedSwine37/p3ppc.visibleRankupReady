@@ -56,7 +56,7 @@ void SCR_000_hook()
         MSG( MSG_DOUZOKUSEI );
     }
 
-    if(CMM_CHK_LVUP(var3))
+    if(EVT_FUNCTION_000F(var3))
     {
         MSG(RankupReady);
     }

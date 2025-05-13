@@ -38,7 +38,7 @@ void RYOU_FUUKA_hook()
                     MSG( MSG_DOUZOKUSEI );
                 }
 
-                if(CMM_CHK_LVUP(var18))
+                if(EVT_FUNCTION_000F(var18))
                 {
                     MSG(RankupReady);
                 }
@@ -213,7 +213,7 @@ void RYOU_YUKAR_hook()
                     MSG( MSG_DOUZOKUSEI );
                 }
 
-                if(CMM_CHK_LVUP(var22))
+                if(EVT_FUNCTION_000F(var22))
                 {
                     MSG(RankupReady);
                 }
@@ -449,7 +449,7 @@ void RYOU_KOROM_hook()
                 MSG( MSG_DOUZOKUSEI );
             }
 
-            if(CMM_CHK_LVUP(var26))
+            if(EVT_FUNCTION_000F(var26))
             {
                 MSG(RankupReady);
             }
@@ -597,7 +597,7 @@ void RYOU_SANAD_hook()
                 MSG( MSG_DOUZOKUSEI );
             }
 
-            if(CMM_CHK_LVUP(var30))
+            if(EVT_FUNCTION_000F(var30))
             {
                 MSG(RankupReady);
             }
@@ -762,7 +762,7 @@ void RYOU_JUNPE_hook()
                 MSG( MSG_DOUZOKUSEI );
             }
 
-            if(CMM_CHK_LVUP(var34))
+            if(EVT_FUNCTION_000F(var34))
             {
                 MSG(RankupReady);
             }
@@ -921,7 +921,7 @@ void RYOU_AMADA_hook()
                 MSG( MSG_DOUZOKUSEI );
             }
 
-            if(CMM_CHK_LVUP(var38))
+            if(EVT_FUNCTION_000F(var38))
             {
                 MSG(RankupReady);
             }
@@ -1065,7 +1065,7 @@ void RYOU_ARAGA_hook()
                 MSG( MSG_DOUZOKUSEI );
             }
 
-            if(CMM_CHK_LVUP(var42))
+            if(EVT_FUNCTION_000F(var42))
             {
                 MSG(RankupReady);
             }

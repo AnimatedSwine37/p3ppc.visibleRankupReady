@@ -68,7 +68,7 @@ void comu_student_council_hook()
                 MSG( MSG_DOUZOKUSEI );
             }
 
-            if(CMM_CHK_LVUP(var22))
+            if(EVT_FUNCTION_000F(var22))
             {
                 MSG(RankupReady);
             }
@@ -84,7 +84,7 @@ void comu_student_council_hook()
             {
                 EVT_FUNCTION_000C( 0, var22 );
                 
-                if ( CMM_CHK_LVUP( var22 ) == 1 )
+                if ( EVT_FUNCTION_000F( var22 ) == 1 )
                 {
                     MSG( SCR_MSG_SEITOKAI_SURU );
                     EVT_FUNCTION_0007( var22 );

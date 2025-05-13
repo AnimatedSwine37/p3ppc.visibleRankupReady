@@ -45,7 +45,7 @@ void comu_track_and_field_hook()
             MSG( MSG_DOUZOKUSEI );
         }
 
-        if(CMM_CHK_LVUP(var62))
+        if(EVT_FUNCTION_000F(var62))
         {
             MSG(RankupReady);
         }
@@ -62,7 +62,7 @@ void comu_track_and_field_hook()
             if ( CMM_GET_LV( 9 ) == 0 )
             {
                 
-                if ( ( CMM_CHK_LVUP( var62 ) == 1 ) && ( CMM_GET_LV( var62 ) >= 3 ) )
+                if ( ( EVT_FUNCTION_000F( var62 ) == 1 ) && ( CMM_GET_LV( var62 ) >= 3 ) )
                 {
                     var56 = 0;
                 }
@@ -74,7 +74,7 @@ void comu_track_and_field_hook()
             }
 
             
-            if ( CMM_CHK_LVUP( var62 ) == 1 )
+            if ( EVT_FUNCTION_000F( var62 ) == 1 )
             {
                 MSG( SCR_MSG_TAIIKUKAI_SURU );
                 EVT_FUNCTION_0007( var62 );
@@ -280,7 +280,7 @@ void comu_tennis_club_hook()
             MSG( MSG_DOUZOKUSEI );
         }
 
-        if(CMM_CHK_LVUP(var71))
+        if(EVT_FUNCTION_000F(var71))
         {
             MSG(RankupReady);
         }
@@ -294,7 +294,7 @@ void comu_tennis_club_hook()
         {
             EVT_FUNCTION_000C( 0, var71 );
             
-            if ( CMM_CHK_LVUP( var71 ) == 1 )
+            if ( EVT_FUNCTION_000F( var71 ) == 1 )
             {
                 MSG( SCR_MSG_TAIIKUKAI_SURU );
                 EVT_FUNCTION_0007( var71 );
@@ -469,7 +469,7 @@ void comu_kendo_club_hook()
             MSG( MSG_DOUZOKUSEI );
         }
 
-        if(CMM_CHK_LVUP(var80))
+        if(EVT_FUNCTION_000F(var80))
         {
             MSG(RankupReady);
         }
@@ -486,7 +486,7 @@ void comu_kendo_club_hook()
             if ( CMM_GET_LV( 9 ) == 0 )
             {
                 
-                if ( ( CMM_CHK_LVUP( var80 ) == 1 ) && ( CMM_GET_LV( var80 ) >= 3 ) )
+                if ( ( EVT_FUNCTION_000F( var80 ) == 1 ) && ( CMM_GET_LV( var80 ) >= 3 ) )
                 {
                     var74 = 0;
                 }
@@ -498,7 +498,7 @@ void comu_kendo_club_hook()
             }
 
             
-            if ( CMM_CHK_LVUP( var80 ) == 1 )
+            if ( EVT_FUNCTION_000F( var80 ) == 1 )
             {
                 MSG( SCR_MSG_TAIIKUKAI_SURU );
                 EVT_FUNCTION_0007( var80 );
@@ -705,7 +705,7 @@ void comu_volley_club_hook()
             MSG( MSG_DOUZOKUSEI );
         }
 
-        if(CMM_CHK_LVUP(var89))
+        if(EVT_FUNCTION_000F(var89))
         {
             MSG(RankupReady);
         }
@@ -719,7 +719,7 @@ void comu_volley_club_hook()
         {
             EVT_FUNCTION_000C( 0, var89 );
             
-            if ( CMM_CHK_LVUP( var89 ) == 1 )
+            if ( EVT_FUNCTION_000F( var89 ) == 1 )
             {
                 MSG( SCR_MSG_TAIIKUKAI_SURU );
                 EVT_FUNCTION_0007( var89 );
@@ -894,7 +894,7 @@ void comu_swim_club_hook()
             MSG( MSG_DOUZOKUSEI );
         }
 
-        if(CMM_CHK_LVUP(var98))
+        if(EVT_FUNCTION_000F(var98))
         {
             MSG(RankupReady);
         }
@@ -911,7 +911,7 @@ void comu_swim_club_hook()
             if ( CMM_GET_LV( 9 ) == 0 )
             {
                 
-                if ( ( CMM_CHK_LVUP( var98 ) == 1 ) && ( CMM_GET_LV( var98 ) >= 3 ) )
+                if ( ( EVT_FUNCTION_000F( var98 ) == 1 ) && ( CMM_GET_LV( var98 ) >= 3 ) )
                 {
                     var92 = 0;
                 }
@@ -923,7 +923,7 @@ void comu_swim_club_hook()
             }
 
             
-            if ( CMM_CHK_LVUP( var98 ) == 1 )
+            if ( EVT_FUNCTION_000F( var98 ) == 1 )
             {
                 MSG( SCR_MSG_TAIIKUKAI_SURU );
                 EVT_FUNCTION_0007( var98 );

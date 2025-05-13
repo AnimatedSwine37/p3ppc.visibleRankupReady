@@ -10,11 +10,11 @@ void SCR_CMM_F_JUNPEI_hook()
     var4 = 2;
     MSG_WND_DSP();
     
-    if ( ( CMM_GET_LV( var4 ) == 7 ) && ( CMM_CHK_LVUP( var4 ) == 1 ) )
+    if ( ( CMM_GET_LV( var4 ) == 7 ) && ( EVT_FUNCTION_000F( var4 ) == 1 ) )
     {
         MSG( MSG_F_JUNPEI_lv8 );
     }
-    else if ( ( CMM_GET_LV( var4 ) == 9 ) && ( CMM_CHK_LVUP( var4 ) == 1 ) )
+    else if ( ( CMM_GET_LV( var4 ) == 9 ) && ( EVT_FUNCTION_000F( var4 ) == 1 ) )
     {
         MSG( MSG_F_JUNPEI_lv10 );
     }
@@ -30,7 +30,7 @@ void SCR_CMM_F_JUNPEI_hook()
         MSG( MSG_DOUZOKUSEI );
     }
 	
-	if(CMM_CHK_LVUP(var4))
+	if(EVT_FUNCTION_000F(var4))
         {
             MSG(RankupReady);
         }
@@ -46,7 +46,7 @@ void SCR_CMM_F_JUNPEI_hook()
     {
         EVT_FUNCTION_000C( 0, var4 );
         
-        if ( CMM_CHK_LVUP( var4 ) == 1 )
+        if ( EVT_FUNCTION_000F( var4 ) == 1 )
         {
             
             if ( CMM_GET_LV( var4 ) == 3 )
@@ -166,7 +166,7 @@ void SCR_CMM_F_YUKARI_hook()
         }
 
     }
-    else if ( ( CMM_GET_LV( var10 ) == 5 ) && ( CMM_CHK_LVUP( var10 ) == 1 ) )
+    else if ( ( CMM_GET_LV( var10 ) == 5 ) && ( EVT_FUNCTION_000F( var10 ) == 1 ) )
     {
         MSG( SCR_MSG_YUKARI_lv6 );
     }
@@ -183,7 +183,7 @@ void SCR_CMM_F_YUKARI_hook()
         MSG( MSG_DOUZOKUSEI );
     }
 	
-		if(CMM_CHK_LVUP(var10))
+		if(EVT_FUNCTION_000F(var10))
         {
             MSG(RankupReady);
         }
@@ -199,7 +199,7 @@ void SCR_CMM_F_YUKARI_hook()
     {
         EVT_FUNCTION_000C( 0, var10 );
         
-        if ( CMM_CHK_LVUP( var10 ) == 1 )
+        if ( EVT_FUNCTION_000F( var10 ) == 1 )
         {
             
             if ( CMM_GET_LV( var10 ) == 5 )
@@ -350,7 +350,7 @@ void SCR_CMM_F_FUUKA__hook()
         }
 
     }
-    else if ( ( CMM_GET_LV( var15 ) == 3 ) && ( CMM_CHK_LVUP( var15 ) == 1 ) )
+    else if ( ( CMM_GET_LV( var15 ) == 3 ) && ( EVT_FUNCTION_000F( var15 ) == 1 ) )
     {
         MSG( SCR_MSG_FUUKA_lv4 );
     }
@@ -367,7 +367,7 @@ void SCR_CMM_F_FUUKA__hook()
         MSG( MSG_DOUZOKUSEI );
     }
 	
-			if(CMM_CHK_LVUP(var15))
+			if(EVT_FUNCTION_000F(var15))
         {
             MSG(RankupReady);
         }
@@ -383,7 +383,7 @@ void SCR_CMM_F_FUUKA__hook()
     {
         EVT_FUNCTION_000C( 0, var15 );
         
-        if ( CMM_CHK_LVUP( var15 ) == 1 )
+        if ( EVT_FUNCTION_000F( var15 ) == 1 )
         {
             
             if ( CMM_GET_LV( var15 ) == 3 )
@@ -560,7 +560,7 @@ void SCR_CMM_F_MITURU_hook()
         MSG( MSG_DOUZOKUSEI );
     }
 	
-	if(CMM_CHK_LVUP(var20))
+	if(EVT_FUNCTION_000F(var20))
         {
             MSG(RankupReady);
         }
@@ -576,7 +576,7 @@ void SCR_CMM_F_MITURU_hook()
     {
         EVT_FUNCTION_000C( 0, var20 );
         
-        if ( CMM_CHK_LVUP( var20 ) == 1 )
+        if ( EVT_FUNCTION_000F( var20 ) == 1 )
         {
             
             if ( CMM_GET_LV( var20 ) == 3 )
@@ -685,7 +685,7 @@ void SCR_CMM_F_AIGISU_hook()
     }
 
     
-    if ( ( CMM_GET_LV( var26 ) == 9 ) && ( CMM_CHK_LVUP( var26 ) == 1 ) )
+    if ( ( CMM_GET_LV( var26 ) == 9 ) && ( EVT_FUNCTION_000F( var26 ) == 1 ) )
     {
         MSG( SCR_MSG_AEGIS_lv10 );
     }
@@ -701,7 +701,7 @@ void SCR_CMM_F_AIGISU_hook()
         MSG( MSG_DOUZOKUSEI );
     }
 	
-		if(CMM_CHK_LVUP(var26))
+		if(EVT_FUNCTION_000F(var26))
         {
             MSG(RankupReady);
         }
@@ -717,7 +717,7 @@ void SCR_CMM_F_AIGISU_hook()
     {
         EVT_FUNCTION_000C( 0, var26 );
         
-        if ( CMM_CHK_LVUP( var26 ) == 1 )
+        if ( EVT_FUNCTION_000F( var26 ) == 1 )
         {
             
             if ( CMM_GET_LV( var26 ) == 9 )
@@ -819,7 +819,7 @@ void SCR_CMM_F_IINKAI_hook()
     }
 
     
-    if ( ( CMM_GET_LV( var31 ) == 7 ) && ( CMM_CHK_LVUP( var31 ) == 1 ) )
+    if ( ( CMM_GET_LV( var31 ) == 7 ) && ( EVT_FUNCTION_000F( var31 ) == 1 ) )
     {
         MSG( SCR_MSG_IINKAI_01_lv8 );
     }
@@ -835,7 +835,7 @@ void SCR_CMM_F_IINKAI_hook()
         MSG( MSG_DOUZOKUSEI );
     }
 	
-			if(CMM_CHK_LVUP(var31))
+			if(EVT_FUNCTION_000F(var31))
         {
             MSG(RankupReady);
         }
@@ -851,7 +851,7 @@ void SCR_CMM_F_IINKAI_hook()
     {
         EVT_FUNCTION_000C( 0, var31 );
         
-        if ( CMM_CHK_LVUP( var31 ) == 1 )
+        if ( EVT_FUNCTION_000F( var31 ) == 1 )
         {
             
             if ( CMM_GET_LV( var31 ) == 7 )
@@ -967,7 +967,7 @@ void SCR_CMM_F_UNDOUBU__hook()
     }
 
     
-    if ( ( CMM_CHK_LVUP( var35 ) == 1 ) && ( CMM_GET_LV( var35 ) == 5 ) )
+    if ( ( EVT_FUNCTION_000F( var35 ) == 1 ) && ( CMM_GET_LV( var35 ) == 5 ) )
     {
         MSG( SCR_MSG_TAIIKUKAI_EX );
     }
@@ -987,7 +987,7 @@ void SCR_CMM_F_UNDOUBU__hook()
         MSG( MSG_DOUZOKUSEI );
     }
 	
-				if(CMM_CHK_LVUP(var35))
+				if(EVT_FUNCTION_000F(var35))
         {
             MSG(RankupReady);
         }
@@ -1003,7 +1003,7 @@ void SCR_CMM_F_UNDOUBU__hook()
     {
         EVT_FUNCTION_000C( 0, var35 );
         
-        if ( CMM_CHK_LVUP( var35 ) == 1 )
+        if ( EVT_FUNCTION_000F( var35 ) == 1 )
         {
             
             if ( ( ( CMM_GET_LV( var35 ) == 5 ) || ( CMM_GET_LV( var35 ) == 6 ) ) || ( CMM_GET_LV( var35 ) == 7 ) )
@@ -1268,7 +1268,7 @@ void SCR_CMM_F_KOROMA_hook()
         MSG( MSG_DOUZOKUSEI );
     }
 	
-					if(CMM_CHK_LVUP(var41))
+					if(EVT_FUNCTION_000F(var41))
         {
             MSG(RankupReady);
         }
@@ -1285,7 +1285,7 @@ void SCR_CMM_F_KOROMA_hook()
     {
         EVT_FUNCTION_000C( 0, var41 );
         
-        if ( CMM_CHK_LVUP( var41 ) == 1 )
+        if ( EVT_FUNCTION_000F( var41 ) == 1 )
         {
             MSG( MSG_KORO_01_YES );
             EVT_FUNCTION_0007( var41 );
@@ -1388,11 +1388,11 @@ void SCR_CMM_F_RYOUJI_hook()
     var51 = EVT_FUNCTION_0023( 14 );
     MSG_WND_DSP();
     
-    if ( ( CMM_GET_LV( 14 ) == 8 ) && ( CMM_CHK_LVUP( var51 ) == 1 ) )
+    if ( ( CMM_GET_LV( 14 ) == 8 ) && ( EVT_FUNCTION_000F( var51 ) == 1 ) )
     {
         MSG( SCR_MSG_RYOUJI_LV9_KOI );
     }
-    else if ( ( CMM_GET_LV( 15 ) == 8 ) && ( CMM_CHK_LVUP( var51 ) == 1 ) )
+    else if ( ( CMM_GET_LV( 15 ) == 8 ) && ( EVT_FUNCTION_000F( var51 ) == 1 ) )
     {
         MSG( SCR_MSG_RYOUJI_LV9 );
     }
@@ -1408,7 +1408,7 @@ void SCR_CMM_F_RYOUJI_hook()
         MSG( MSG_DOUZOKUSEI );
     }
 	
-						if(CMM_CHK_LVUP(var51))
+						if(EVT_FUNCTION_000F(var51))
         {
             MSG(RankupReady);
         }
@@ -1424,7 +1424,7 @@ void SCR_CMM_F_RYOUJI_hook()
     {
         EVT_FUNCTION_000C( 0, var51 );
         
-        if ( CMM_CHK_LVUP( var51 ) == 1 )
+        if ( EVT_FUNCTION_000F( var51 ) == 1 )
         {
             
             if ( CMM_GET_LV( var51 ) == 8 )
@@ -1575,7 +1575,7 @@ void SCR_CMM_F_AMADA__hook()
         }
 
     }
-    else if ( ( ( CMM_GET_LV( var56 ) == 8 ) && ( CMM_CHK_LVUP( var56 ) == 1 ) ) && !BIT_CHK( 174 ) )
+    else if ( ( ( CMM_GET_LV( var56 ) == 8 ) && ( EVT_FUNCTION_000F( var56 ) == 1 ) ) && !BIT_CHK( 174 ) )
     {
         MSG( SCR_MSG_AMADA_LV9_MATI );
         MSG_WND_CLS();
@@ -1602,7 +1602,7 @@ void SCR_CMM_F_AMADA__hook()
     else if ( BIT_CHK( 2060 ) )
     {
         
-        if ( ( ( CMM_GET_LV( var56 ) == 8 ) && ( CMM_CHK_LVUP( var56 ) == 1 ) ) && !BIT_CHK( 2058 ) )
+        if ( ( ( CMM_GET_LV( var56 ) == 8 ) && ( EVT_FUNCTION_000F( var56 ) == 1 ) ) && !BIT_CHK( 2058 ) )
         {
             MSG( SCR_MSG_AMADA_LV9 );
         }
@@ -1624,7 +1624,7 @@ void SCR_CMM_F_AMADA__hook()
         MSG( MSG_DOUZOKUSEI );
     }
 	
-							if(CMM_CHK_LVUP(var56))
+							if(EVT_FUNCTION_000F(var56))
         {
             MSG(RankupReady);
         }
@@ -1709,7 +1709,7 @@ void SCR_CMM_F_AMADA__hook()
 
             return;
         }
-        else if ( ( ( BIT_CHK( 2060 ) && ( CMM_GET_LV( var56 ) == 8 ) ) && ( CMM_CHK_LVUP( var56 ) == 1 ) ) && !BIT_CHK( 2058 ) )
+        else if ( ( ( BIT_CHK( 2060 ) && ( CMM_GET_LV( var56 ) == 8 ) ) && ( EVT_FUNCTION_000F( var56 ) == 1 ) ) && !BIT_CHK( 2058 ) )
         {
             EVT_FUNCTION_0017( var56 );
             MSG( SCR_MSG_AMADA_LV9_YES );
@@ -1744,7 +1744,7 @@ void SCR_CMM_F_AMADA__hook()
 
         EVT_FUNCTION_000C( 0, var56 );
         
-        if ( CMM_CHK_LVUP( var56 ) == 1 )
+        if ( EVT_FUNCTION_000F( var56 ) == 1 )
         {
             
             if ( CMM_GET_LV( var56 ) == 6 )
@@ -1873,19 +1873,19 @@ void SCR_CMM_F_KODOMO___hook()
     var60 = 18;
     MSG_WND_DSP();
     
-    if ( ( CMM_GET_LV( var60 ) == 6 ) && ( CMM_CHK_LVUP( var60 ) == 1 ) )
+    if ( ( CMM_GET_LV( var60 ) == 6 ) && ( EVT_FUNCTION_000F( var60 ) == 1 ) )
     {
         MSG( SCR_MSG_KODOMO_lv7 );
     }
-    else if ( ( CMM_GET_LV( var60 ) == 3 ) && ( CMM_CHK_LVUP( var60 ) == 1 ) )
+    else if ( ( CMM_GET_LV( var60 ) == 3 ) && ( EVT_FUNCTION_000F( var60 ) == 1 ) )
     {
         MSG( SCR_MSG_KODOMO_lv4 );
     }
-    else if ( ( CMM_GET_LV( var60 ) == 4 ) && ( CMM_CHK_LVUP( var60 ) == 1 ) )
+    else if ( ( CMM_GET_LV( var60 ) == 4 ) && ( EVT_FUNCTION_000F( var60 ) == 1 ) )
     {
         MSG( SCR_MSG_KODOMO_lv5 );
     }
-    else if ( ( CMM_GET_LV( var60 ) == 5 ) && ( CMM_CHK_LVUP( var60 ) == 1 ) )
+    else if ( ( CMM_GET_LV( var60 ) == 5 ) && ( EVT_FUNCTION_000F( var60 ) == 1 ) )
     {
         MSG( SCR_MSG_KODOMO_lv5 );
     }
@@ -1906,7 +1906,7 @@ void SCR_CMM_F_KODOMO___hook()
         MSG( MSG_DOUZOKUSEI );
     }
 	
-								if(CMM_CHK_LVUP(var60))
+								if(EVT_FUNCTION_000F(var60))
         {
             MSG(RankupReady);
         }
@@ -1931,7 +1931,7 @@ void SCR_CMM_F_KODOMO___hook()
     {
         EVT_FUNCTION_000C( 0, var60 );
         
-        if ( CMM_CHK_LVUP( var60 ) == 1 )
+        if ( EVT_FUNCTION_000F( var60 ) == 1 )
         {
             
             if ( CMM_GET_LV( var60 ) == 6 )
@@ -2045,7 +2045,7 @@ void SCR_CMM_F_DOUKOUKA_hook()
     var68 = 20;
     MSG_WND_DSP();
     
-    if ( ( CMM_GET_LV( var68 ) == 3 ) && ( CMM_CHK_LVUP( var68 ) == 1 ) )
+    if ( ( CMM_GET_LV( var68 ) == 3 ) && ( EVT_FUNCTION_000F( var68 ) == 1 ) )
     {
         MSG( SCR_MSG_DOUKOUKAI_lv4 );
     }
@@ -2065,7 +2065,7 @@ void SCR_CMM_F_DOUKOUKA_hook()
         MSG( MSG_DOUZOKUSEI );
     }
 	
-									if(CMM_CHK_LVUP(var68))
+									if(EVT_FUNCTION_000F(var68))
         {
             MSG(RankupReady);
         }
@@ -2081,7 +2081,7 @@ void SCR_CMM_F_DOUKOUKA_hook()
     {
         EVT_FUNCTION_000C( 0, var68 );
         
-        if ( CMM_CHK_LVUP( var68 ) == 1 )
+        if ( EVT_FUNCTION_000F( var68 ) == 1 )
         {
             
             if ( ( CMM_GET_LV( var68 ) >= 3 ) && ( CMM_GET_LV( var68 ) < 7 ) )
@@ -2445,7 +2445,7 @@ void SCR_CMM_F_JAPANET__hook()
             MSG( MSG_DOUZOKUSEI );
         }
 		
-											if(CMM_CHK_LVUP(var72))
+											if(EVT_FUNCTION_000F(var72))
         {
             MSG(RankupReady);
         }
@@ -2611,7 +2611,7 @@ void SCR_CMM_F_HAKAISOU_hook()
         MSG_WND_CLS();
         return;
     }
-    else if ( ( CMM_GET_LV( var76 ) >= 8 ) && ( CMM_CHK_LVUP( var76 ) == 1 ) )
+    else if ( ( CMM_GET_LV( var76 ) >= 8 ) && ( EVT_FUNCTION_000F( var76 ) == 1 ) )
     {
         MSG( SCR_MSG_HAKAI_lv9 );
     }
@@ -2631,7 +2631,7 @@ void SCR_CMM_F_HAKAISOU_hook()
         MSG( MSG_DOUZOKUSEI );
     }
 	
-												if(CMM_CHK_LVUP(var76))
+												if(EVT_FUNCTION_000F(var76))
         {
             MSG(RankupReady);
         }
@@ -2666,7 +2666,7 @@ void SCR_CMM_F_HAKAISOU_hook()
     {
         EVT_FUNCTION_000C( 0, var76 );
         
-        if ( CMM_CHK_LVUP( var76 ) == 1 )
+        if ( EVT_FUNCTION_000F( var76 ) == 1 )
         {
             
             if ( CMM_GET_LV( var76 ) == 1 )
@@ -2836,7 +2836,7 @@ void SCR_CMM_F_SANADA_hook()
     }
 
     
-    if ( ( ( CMM_GET_LV( var80 ) == 7 ) && ( CMM_CHK_LVUP( var80 ) == 1 ) ) && !BIT_CHK( 172 ) )
+    if ( ( ( CMM_GET_LV( var80 ) == 7 ) && ( EVT_FUNCTION_000F( var80 ) == 1 ) ) && !BIT_CHK( 172 ) )
     {
         MSG( SCR_MSG_SANADA_LV8_MATI );
         MSG_WND_CLS();
@@ -2849,7 +2849,7 @@ void SCR_CMM_F_SANADA_hook()
         MSG( SANADA_MAX );
         MSG( SANADA_AFTERMAX );
     }
-    else if ( CMM_CHK_LVUP( var80 ) == 1 )
+    else if ( EVT_FUNCTION_000F( var80 ) == 1 )
     {
         
         if ( ( ( ( CMM_GET_LV( var80 ) == 3 ) || ( CMM_GET_LV( var80 ) == 6 ) ) || ( CMM_GET_LV( var80 ) == 7 ) ) || ( CMM_GET_LV( var80 ) == 8 ) )
@@ -2874,7 +2874,7 @@ void SCR_CMM_F_SANADA_hook()
         MSG( MSG_DOUZOKUSEI );
     }
 	
-													if(CMM_CHK_LVUP(var80))
+													if(EVT_FUNCTION_000F(var80))
         {
             MSG(RankupReady);
         }
@@ -2912,7 +2912,7 @@ void SCR_CMM_F_SANADA_hook()
         {
             EVT_FUNCTION_000C( 0, var80 );
             
-            if ( CMM_CHK_LVUP( var80 ) == 1 )
+            if ( EVT_FUNCTION_000F( var80 ) == 1 )
             {
                 
                 if ( CMM_GET_LV( 23 ) == 9 )
@@ -3036,7 +3036,7 @@ void SCR_CMM_F_YOMEI____hook()
     }
 
 	
-													if(CMM_CHK_LVUP(var85))
+													if(EVT_FUNCTION_000F(var85))
         {
             MSG(RankupReady);
         }
@@ -3204,7 +3204,7 @@ void SCR_CMM_F_ARAGAK_hook()
         }
 
     }
-    else if ( ( ( ( CMM_GET_LV( var91 ) == 9 ) && ( CMM_CHK_LVUP( var91 ) == 1 ) ) && ( GET_ITEM_NUM( ( 1536 + 96 ) ) == 0 ) ) && !BIT_CHK( 2061 ) )
+    else if ( ( ( ( CMM_GET_LV( var91 ) == 9 ) && ( EVT_FUNCTION_000F( var91 ) == 1 ) ) && ( GET_ITEM_NUM( ( 1536 + 96 ) ) == 0 ) ) && !BIT_CHK( 2061 ) )
     {
         MSG( ARAGAK_LV9_TOKEI_NASI );
         MSG_WND_CLS();
@@ -3227,11 +3227,11 @@ void SCR_CMM_F_ARAGAK_hook()
         }
 
     }
-    else if ( ( CMM_GET_LV( var91 ) == 7 ) && ( CMM_CHK_LVUP( var91 ) == 1 ) )
+    else if ( ( CMM_GET_LV( var91 ) == 7 ) && ( EVT_FUNCTION_000F( var91 ) == 1 ) )
     {
         MSG( SCR_MSG_ARAGAK_LV8 );
     }
-    else if ( ( ( CMM_GET_LV( var91 ) == 9 ) && ( CMM_CHK_LVUP( var91 ) == 1 ) ) && ( GET_ITEM_NUM( ( 1536 + 96 ) ) == 1 ) )
+    else if ( ( ( CMM_GET_LV( var91 ) == 9 ) && ( EVT_FUNCTION_000F( var91 ) == 1 ) ) && ( GET_ITEM_NUM( ( 1536 + 96 ) ) == 1 ) )
     {
         MSG( ARAGAK_LV9_TOKEI_ARI );
         
@@ -3258,7 +3258,7 @@ void SCR_CMM_F_ARAGAK_hook()
         MSG( MSG_DOUZOKUSEI );
     }
 	
-														if(CMM_CHK_LVUP(var91))
+														if(EVT_FUNCTION_000F(var91))
         {
             MSG(RankupReady);
         }
@@ -3327,7 +3327,7 @@ void SCR_CMM_F_ARAGAK_hook()
         {
             EVT_FUNCTION_000C( 0, var91 );
             
-            if ( CMM_CHK_LVUP( var91 ) == 1 )
+            if ( EVT_FUNCTION_000F( var91 ) == 1 )
             {
                 
                 if ( CMM_GET_LV( var91 ) == 7 )

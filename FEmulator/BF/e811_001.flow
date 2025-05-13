@@ -173,7 +173,7 @@ void e811_001_INVITE_hook()
             MSG( MSG_DOUZOKUSEI );
         }
 
-        if(CMM_CHK_LVUP(var1))
+        if(EVT_FUNCTION_000F(var1))
         {
             MSG(RankupReady);
         }
@@ -401,7 +401,7 @@ void e811_001_INVITE_hook()
             MSG( MSG_DOUZOKUSEI );
         }
 
-        if(CMM_CHK_LVUP(var1))
+        if(EVT_FUNCTION_000F(var1))
         {
             MSG(RankupReady);
         }
@@ -628,7 +628,7 @@ void e811_001_INVITE_hook()
             MSG( MSG_DOUZOKUSEI );
         }
 
-        if(CMM_CHK_LVUP(var1))
+        if(EVT_FUNCTION_000F(var1))
         {
             MSG(RankupReady);
         }

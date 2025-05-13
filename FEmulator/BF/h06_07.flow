@@ -62,7 +62,7 @@ void comu_reading_room_hook()
             MSG( MSG_DOUZOKUSEI );
         }
 
-        if(CMM_CHK_LVUP(var104))
+        if(EVT_FUNCTION_000F(var104))
         {
             MSG(RankupReady);
         }
@@ -78,7 +78,7 @@ void comu_reading_room_hook()
         {
             EVT_FUNCTION_000C( 0, var104 );
             
-            if ( CMM_CHK_LVUP( var104 ) == 1 )
+            if ( EVT_FUNCTION_000F( var104 ) == 1 )
             {
                 MSG( TOSHO_COMMU_SURU );
                 EVT_FUNCTION_0007( var104 );
@@ -258,7 +258,7 @@ void comu_health_room_hook()
             MSG( MSG_DOUZOKUSEI );
         }
 
-        if(CMM_CHK_LVUP(var108))
+        if(EVT_FUNCTION_000F(var108))
         {
             MSG(RankupReady);
         }
@@ -274,7 +274,7 @@ void comu_health_room_hook()
         {
             EVT_FUNCTION_000C( 0, var108 );
             
-            if ( CMM_CHK_LVUP( var108 ) == 1 )
+            if ( EVT_FUNCTION_000F( var108 ) == 1 )
             {
                 MSG( HOKEN_COMMU_SURU );
                 EVT_FUNCTION_0007( var108 );

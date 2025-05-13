@@ -57,7 +57,7 @@ void comu_bookseller_hook()
             MSG( MSG_DOUZOKUSEI );
         }
 
-        if(CMM_CHK_LVUP(var19))
+        if(EVT_FUNCTION_000F(var19))
         {
             MSG(RankupReady);
         }
@@ -83,7 +83,7 @@ void comu_bookseller_hook()
             if ( FUNCTION_0033() == 3 )
             {
                 
-                if ( CMM_CHK_LVUP( var19 ) == 1 )
+                if ( EVT_FUNCTION_000F( var19 ) == 1 )
                 {
                     MSG( SCR_MSG_HURUHON_SURU_02 );
                     EVT_FUNCTION_0007( var19 );
@@ -94,7 +94,7 @@ void comu_bookseller_hook()
                 }
 
             }
-            else if ( CMM_CHK_LVUP( var19 ) == 1 )
+            else if ( EVT_FUNCTION_000F( var19 ) == 1 )
             {
                 MSG( SCR_MSG_HURUHON_SURU );
                 EVT_FUNCTION_0007( var19 );
